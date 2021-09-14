@@ -7,6 +7,8 @@ info:
     The following OpenAPI documentation describes the details of the new Tableau RESTful APIs. A growing number of these are being released alongside more than 150 [classic REST endpoints](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm) that are currently in wide usage in the Tableau community.
 
     There are some differences users of the classic endpoints will recognize when viewing these new endpoints. Request bodies for these new REST endpoints must be formatted using JSON. Endpoint URIs don't contain an API version number. For more information, see [REST API and Resource Versions](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm).
+
+    ![tableau platform](../assets/images/tableau-platform.png)
   version: latest
   contact:
     name: Stelloprint
