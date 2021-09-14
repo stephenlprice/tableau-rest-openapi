@@ -42,7 +42,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem'
       tags:
-        - analytics extensions
+        - Analytics Extensions
     delete:
       tags:
         - Settings
