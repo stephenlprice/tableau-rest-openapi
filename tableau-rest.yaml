@@ -1,0 +1,736 @@
+openapi: 3.0.1
+info:
+  title: Tableau Services APIs
+  description: >-
+    ## Open API specification for Tableau Services APIs.
+
+
+    The following OpenAPI documentation describes the details of the new Tableau
+    RESTful APIs. A growing number of these are being released alongside more
+    than 150 [classic REST
+    endpoints](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm)
+    that are currently in wide usage in the Tableau community.
+
+
+    There are some differences users of the classic endpoints will recognize
+    when viewing these new endpoints. Request bodies for these new REST
+    endpoints must be formatted using JSON. Endpoint URIs don't contain an API
+    version number. For more information, see [REST API and Resource
+    Versions](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm).
+  version: latest
+  contact:
+    name: Stelloprint
+    email: stellopricint@gmail.com
+    url: 'https://stelloprint.stoplight.io/'
+  license:
+    name: Sample
+    url: 'https://stelloprint.stoplight.io/'
+  termsOfService: 'https://stelloprint.stoplight.io/'
+paths:
+  '/api/-/settings/site/extensions/analytics/connections/{connection_luid}':
+    put:
+      tags:
+        - Settings
+      summary: Update analytics extension connection
+      description: >-
+        Updates a specific connection to an external service for analytics
+        extensions on this site. Permissions - This method can be called by site
+        and server administrators.
+      operationId: AnalyticsExtensionsService_updateAnalyticsExtensionsConnection
+      parameters:
+        - name: connection_luid
+          in: path
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/tableau.auth.header'
+      requestBody:
+        content:
+          application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json:
+            schema:
+              $ref: >-
+                #/components/schemas/tableau.analyticsextensions.v1.ConnectionItem
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.analyticsextensions.v1.ConnectionItem
+    delete:
+      tags:
+        - Settings
+      summary: Delete analytics extension connection
+      description: >-
+        Deletes a specific connection to an external service for analytics
+        extensions on this site. Permissions - This method can be called by site
+        and server administrators. Availability - This method is not available
+        for Tableau Online.
+      operationId: AnalyticsExtensionsService_deleteAnalyticsExtensionsConnection
+      parameters:
+        - name: connection_luid
+          in: path
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/tableau.auth.header'
+      responses:
+        default:
+          description: Empty Response Body
+  '/api/-/settings/site/extensions/dashboard/safeListItems/{safe_list_item_luid}':
+    get:
+      tags:
+        - Settings
+      summary: Get allowed dashboard extension on site
+      description: >-
+        Gets the details of a specific dashboard extension on the safe list of
+        the site you are signed into. Permissions - This method can be called by
+        site and server administrators.
+      operationId: >-
+        DashboardExtensionsSiteSettingsService_getDashboardExtensionsSafeListItem
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+        - name: safe_list_item_luid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.extensions.dashboard.v1.SafeListItem
+    put:
+      tags:
+        - Settings
+      summary: Update settings for allowed dashboard extension on site
+      description: >-
+        Updates the settings of a specific dashboard extension in the safe list
+        of the site you are signed into. Permissions - This method can be called
+        by site and server administrators.
+      operationId: >-
+        DashboardExtensionsSiteSettingsService_updateDashboardExtensionsSafeListItem
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+        - name: safe_list_item_luid
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json:
+            schema:
+              $ref: >-
+                #/components/schemas/tableau.extensions.dashboard.v1.SafeListItem
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.extensions.dashboard.v1.SafeListItem
+    delete:
+      tags:
+        - Settings
+      summary: Disallow dashboard extension on site
+      description: >-
+        Deletes a specific dashboard extension from the safe list of the site
+        you are signed into. Permissions - This method can be called by site and
+        server administrators.
+      operationId: >-
+        DashboardExtensionsSiteSettingsService_deleteDashboardExtensionsSafeListItem
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+        - name: safe_list_item_luid
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: Empty Response Body
+  /api/-/settings/site/extensions/analytics:
+    get:
+      tags:
+        - Settings
+      summary: Get enabled state of analytics extensions on site
+      description: >-
+        Gets the enabled/disabled state of analytics extensions on a site.
+        Permissions - This method can be called by site and server
+        administrators. Availability - This method is not available for Tableau
+        Online.
+      operationId: AnalyticsExtensionsService_getAnalyticsExtensionsSiteSettings
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.analyticsextensions.v1.SiteSettings+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.analyticsextensions.v1.SiteSettings
+    put:
+      tags:
+        - Settings
+      summary: Update enabled state of analytics extensions on site
+      description: >-
+        Enables or disables analytics extensions on a site. Permissions - This
+        method can be called by site and server administrators. Availability -
+        This method is not available for Tableau Online.
+      operationId: AnalyticsExtensionsService_updateAnalyticsExtensionsSiteSettings
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      requestBody:
+        content:
+          application/vnd.tableau.analyticsextensions.v1.SiteSettings+json:
+            schema:
+              $ref: '#/components/schemas/tableau.analyticsextensions.v1.SiteSettings'
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.analyticsextensions.v1.SiteSettings+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.analyticsextensions.v1.SiteSettings
+  /api/-/settings/site/extensions/dashboard:
+    get:
+      tags:
+        - Settings
+      summary: List settings for dashboard extensions on site
+      description: >-
+        Lists the dashboard extension settings of the site you are signed into.
+        Permissions - This method can be called by site and server
+        administrators.
+      operationId: >-
+        DashboardExtensionsSiteSettingsService_getDashboardExtensionsSiteSettings
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.SiteSettings+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.extensions.dashboard.v1.SiteSettings
+    put:
+      tags:
+        - Settings
+      summary: Update settings for dashboard extension on site
+      description: >-
+        Updates the settings for dashboard extensions for the site you are
+        signed into. Permissions - This method can be called by site and server
+        administrators.
+      operationId: >-
+        DashboardExtensionsSiteSettingsService_updateDashboardExtensionsSiteSettings
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      requestBody:
+        content:
+          application/vnd.tableau.extensions.dashboard.v1.SiteSettings+json:
+            schema:
+              $ref: >-
+                #/components/schemas/tableau.extensions.dashboard.v1.SiteSettings
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.SiteSettings+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.extensions.dashboard.v1.SiteSettings
+  /api/-/settings/server/extensions/dashboard/blockListItems:
+    get:
+      tags:
+        - Settings
+      summary: List blocked dashboard extensions on server
+      description: >-
+        Lists the dashboard extensions on the blocked list of a server.
+        Permissions - This method can only be called by server administrators.
+        Availability - Not available for Tableau Online.
+      operationId: >-
+        DashboardExtensionsServerSettingsService_getDashboardExtensionsBlockListItems
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.BlockListItems+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.extensions.dashboard.v1.BlockListItems
+    post:
+      tags:
+        - Settings
+      summary: Block dashboard extension on server
+      description: >-
+        Adds a dashboard extension to the block list of a server. Permissions -
+        This method can only be called by server administrators. Availability -
+        Not available for Tableau Online.
+      operationId: >-
+        DashboardExtensionsServerSettingsService_createDashboardExtensionsBlockListItem
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      requestBody:
+        content:
+          application/vnd.tableau.extensions.dashboard.v1.BlockListItem+json:
+            schema:
+              $ref: >-
+                #/components/schemas/tableau.extensions.dashboard.v1.BlockListItem
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.BlockListItem+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.extensions.dashboard.v1.BlockListItem
+  /api/-/settings/site/extensions/dashboard/safeListItems:
+    get:
+      tags:
+        - Settings
+      summary: List allowed dashboard extensions on site
+      description: >-
+        Lists the dashboard extensions on the safe list of the site you are
+        signed into. Permissions - This method can be called by site and server
+        administrators.
+      operationId: >-
+        DashboardExtensionsSiteSettingsService_getDashboardExtensionsSafeListItems
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.SafeListItems+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.extensions.dashboard.v1.SafeListItems
+    post:
+      tags:
+        - Settings
+      summary: Allow dashboard extension on site
+      description: >-
+        Adds a dashboard extension to the safe list of the site you are signed
+        into. Permissions - This method can be called by site and server
+        administrators.
+      operationId: >-
+        DashboardExtensionsSiteSettingsService_createDashboardExtensionsSafeListItem
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      requestBody:
+        content:
+          application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json:
+            schema:
+              $ref: >-
+                #/components/schemas/tableau.extensions.dashboard.v1.SafeListItem
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.extensions.dashboard.v1.SafeListItem
+  /api/-/settings/site/extensions/analytics/connections:
+    get:
+      tags:
+        - Settings
+      summary: List analytics extension connections on site
+      description: >-
+        Lists the analytics extension connections configured on a site.
+        Permissions- This method can be called by site and server
+        administrators. Availability - This method is not available for Tableau
+        Online.
+      operationId: AnalyticsExtensionsService_getAnalyticsExtensionsConnections
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ConnectionList+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.analyticsextensions.v1.ConnectionList
+    post:
+      tags:
+        - Settings
+      summary: Add analytics extension connection to site
+      description: >-
+        Adds a connection to an external service for analytics extensions on
+        this site. Permissions - This method can be called by site and server
+        administrators. Availability - This method is not available for Tableau
+        Online.
+      operationId: AnalyticsExtensionsService_addAnalyticsExtensionsConnection
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      requestBody:
+        content:
+          application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json:
+            schema:
+              $ref: >-
+                #/components/schemas/tableau.analyticsextensions.v1.ConnectionItem
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.analyticsextensions.v1.ConnectionItem
+  /api/-/settings/server/extensions/analytics:
+    get:
+      tags:
+        - Settings
+      summary: Get enabled state of analytics extensions on server
+      description: >-
+        Gets the enabled/disabled state of analytics extensions on a server.
+        Permissions - This method can only be called by server administrators.
+        Availability - This method is not available on Tableau Online.
+      operationId: AnalyticsExtensionsService_getAnalyticsExtensionsServerSettings
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ServerSettings+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.analyticsextensions.v1.ServerSettings
+    put:
+      tags:
+        - Settings
+      summary: Enable/disable analytics extensions on server
+      description: >-
+        Enables or disables analytics extensions on a server. Permissions - This
+        method can only be called by server administrators. Availability - This
+        method is not available for Tableau Online.
+      operationId: AnalyticsExtensionsService_updateAnalyticsExtensionsServerSettings
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      requestBody:
+        content:
+          application/vnd.tableau.analyticsextensions.v1.ServerSettings+json:
+            schema:
+              $ref: >-
+                #/components/schemas/tableau.analyticsextensions.v1.ServerSettings
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ServerSettings+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.analyticsextensions.v1.ServerSettings
+  '/api/-/settings/server/extensions/dashboard/blockListItems/{block_list_item_luid}':
+    get:
+      tags:
+        - Settings
+      summary: Get blocked dashboard extension on server
+      description: >-
+        Gets the details of a specific dashboard extension on the blocked list
+        of a server. Permissions - This method can only be called by server
+        administrators. Availability - Not available for Tableau Online.
+      operationId: >-
+        DashboardExtensionsServerSettingsService_getDashboardExtensionsBlockListItem
+      parameters:
+        - name: block_list_item_luid
+          in: path
+          required: true
+          schema:
+            type: string
+            description: Unique id for extension in server blocklist.
+        - $ref: '#/components/parameters/tableau.auth.header'
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.BlockListItem+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.extensions.dashboard.v1.BlockListItem
+    delete:
+      tags:
+        - Settings
+      summary: Unblock dashboard extension on server
+      description: >-
+        Deletes a specific extension from the block list of a server.
+        Permissions - This method can only be called by server administrators.
+        Availability - Not available for Tableau Online.
+      operationId: >-
+        DashboardExtensionsServerSettingsService_deleteDashboardExtensionsBlockListItem
+      parameters:
+        - name: block_list_item_luid
+          in: path
+          required: true
+          schema:
+            type: string
+            description: Unique id for an extension in server blocklist.
+        - $ref: '#/components/parameters/tableau.auth.header'
+      responses:
+        default:
+          description: Empty Response Body
+  /api/-/settings/server/extensions/dashboard:
+    get:
+      tags:
+        - Settings
+      summary: List settings for dashboard extensions on server
+      description: >-
+        Lists the dashboard extension settings of a server. Permissions - This
+        method can only be called by server administrators. Availability - Not
+        available for Tableau Online.
+      operationId: >-
+        DashboardExtensionsServerSettingsService_getDashboardExtensionsServerSettings
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.ServerSettings+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.extensions.dashboard.v1.ServerSettings
+    put:
+      tags:
+        - Settings
+      summary: Update settings for dashboard extensions on server
+      description: >-
+        Updates the settings for dashboard extensions of a server. Permissions -
+        This method can only be called by server administrators.
+      operationId: >-
+        DashboardExtensionsServerSettingsService_updateDashboardExtensionsServerSettings
+      parameters:
+        - $ref: '#/components/parameters/tableau.auth.header'
+      requestBody:
+        content:
+          application/vnd.tableau.extensions.dashboard.v1.ServerSettings+json:
+            schema:
+              $ref: >-
+                #/components/schemas/tableau.extensions.dashboard.v1.ServerSettings
+      responses:
+        default:
+          description: ''
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.ServerSettings+json:
+              schema:
+                $ref: >-
+                  #/components/schemas/tableau.extensions.dashboard.v1.ServerSettings
+components:
+  schemas:
+    tableau.analyticsextensions.v1.ConnectionItem:
+      properties:
+        host:
+          type: string
+          description: >-
+            Required. The location of an external service (TabPy, Rserve,
+            Einstein_Discovery, Generic API, or other) that responds to your
+            analytics extension requests. The case sensitive value must be a
+            URI, IPv4 or IPv6 address that is a maximum of 255 Unicode
+            characters.
+        port:
+          type: integer
+          description: Required. Integer between 1 and 65535.
+          format: int32
+        is_auth_enabled:
+          type: boolean
+          description: >-
+            For Tableau Online: The value is always true. For on premise Tableau
+            servers: Optional. Set to true if authentication is enabled on the
+            external service. If true, username and password are required.
+            Default is false.
+        username:
+          type: string
+          description: 'For Tableau Online: A username is always required.'
+        password:
+          type: string
+          description: 'For Tableau Online: A password is always required.'
+        is_ssl_enabled:
+          type: boolean
+          description: >-
+            For Tableau Online: The value is always true. For on premise Tableau
+            servers: Optional. Set true if SSL is enabled on the external
+            service. If true, the host address must use HTTPS. Default is false.
+        connection_brief:
+          $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionBrief'
+        connection_luid:
+          type: string
+    tableau.analyticsextensions.v1.ServerSettings:
+      properties:
+        enabled:
+          type: boolean
+    tableau.extensions.dashboard.v1.ServerSettings:
+      properties:
+        block_list_items:
+          type: array
+          items:
+            description: The server block list.
+            $ref: '#/components/schemas/tableau.extensions.dashboard.v1.BlockListItem'
+        extensions_enabled:
+          type: boolean
+          description: Specifies whether extensions are enabled in the server.
+      description: Extension settings of a Tableau server.
+    tableau.analyticsextensions.v1.ConnectionList:
+      properties:
+        connectionList:
+          type: array
+          items:
+            description: >-
+              List of connections to external services available for analytics
+              extensions on a site.
+            $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem'
+    tableau.extensions.dashboard.v1.BlockListItems:
+      properties:
+        block_list_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/tableau.extensions.dashboard.v1.BlockListItem'
+      description: A list of dashboard extensions blocked from running on a server.
+    tableau.extensions.dashboard.v1.SiteSettings:
+      properties:
+        extensions_enabled:
+          type: boolean
+          description: Specifies whether extensions are allowed to run on the site.
+        allow_sandboxed:
+          type: boolean
+          description: >-
+            Specifies whether sandboxed extensions are allowed to run on the
+            site.
+        safe_list_items:
+          type: array
+          items:
+            description: The site safe list.
+            $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem'
+      description: The settings for dashboard extension settings on a site.
+    tableau.extensions.dashboard.v1.SafeListItems:
+      properties:
+        safe_list_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem'
+      description: A list of dashboard extensions allowed to run on a site.
+    tableau.analyticsextensions.v1.SiteSettings:
+      properties:
+        enabled:
+          type: boolean
+    tableau.extensions.dashboard.v1.BlockListItem:
+      properties:
+        url:
+          type: string
+          description: Url where the extension is hosted.
+        block_list_item_luid:
+          type: string
+          description: Unique id for extension in server blocklist.
+      description: A dashboard extension that is blocked from running on a server.
+    tableau.extensions.dashboard.v1.SafeListItem:
+      properties:
+        safe_list_item_luid:
+          type: string
+        url:
+          type: string
+          description: The URL of the extension.
+        allow_full_data:
+          type: boolean
+          description: >-
+            When true, the extension has access to underlying data of a
+            workbook. This setting is only effective when the extension is on
+            the site safe list. Default is false.
+        prompt_needed:
+          type: boolean
+          description: >-
+            When true, the user will be prompted to grant an extension access to
+            the underlying data of a workbook. This setting is only effective
+            when the extension is on the site safe list. Default is false.
+      description: A dashboard extension that is allowed to run on a site.
+    tableau.analyticsextensions.v1.ConnectionBrief:
+      properties:
+        connection_name:
+          type: string
+          description: Required. The title of the connection.
+        connection_type:
+          type: string
+          description: >-
+            Required. The kind of service responding to analytics extension
+            requests. The value can be: TABPY, for a [Tableau
+            TabPy](https://github.com/tableau/TabPy) server; GENERIC_API for
+            your custom service that complies with the [Analytics Extensions API
+            spec](https://tableau.github.io/analytics-extensions-api/docs/ae_intro.html);
+            or RSERVE, for an [Rserve](https://www.tableau.com/solutions/r)
+            service; or EINSTEIN_DISCOVERY for your instance of [Einstein
+            Discovery](https://help.tableau.com/current/server-linux/en-us/config_r_tabpy.htm).
+          enum:
+            - UNDEFINED
+            - TABPY
+            - RSERVE
+            - EINSTEIN_DISCOVERY
+            - GENERIC_API
+  parameters:
+    tableau.auth.header:
+      name: X-Tableau-Auth
+      in: header
+      required: false
+      schema:
+        type: string
+        description: Tableau Authentication Header
+  securitySchemes:
+    X-Tableau-Auth:
+      name: X-Tableau-Auth
+      type: apiKey
+      in: header
+      description: >-
+        The Tableau authentication header. The value is a credentials token from
+        a Tableau server's response to an authentication request.
+
+
+        The Tableau Server REST API requires that you send a credentials token
+        with each request. The credentials token lets the server verify you as a
+        valid, signed in user. To get a token, you call Sign In and pass
+        credentials of a valid user, either a Personal Access Token (PAT) or a
+        user name and password, along with the content URL (subpath) of the site
+        you are signing in to.
+
+
+        The Content-Type and Accept headers should be the mediatype of the
+        request and response except in cases where you want to  [explicitly
+        allow other versions of the
+        resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning).
+security:
+  - X-Tableau-Auth: []
+servers:
+  - url: 'https://10ax.online.tableau.com'
+    description: US West - Oregon 1
+  - url: 'https://10ay.online.tableau.com'
+    description: US West - Oregon 2
+  - url: 'https://10az.online.tableau.com'
+    description: US West - Oregon 3
+  - url: 'https://us-west-2b.online.tableau.com'
+    description: US West - Oregon 4
+  - url: 'https://us-east-1.online.tableau.com'
+    description: US East - Virginia 1
+  - url: 'https://prod-useast-a.online.tableau.com'
+    description: US East - Virginia  2
+  - url: 'https://prod-useast-b.online.tableau.com'
+    description: US East - Virginia 3
+  - url: 'https://dub01.online.tableau.com'
+    description: EU West - Ireland 1
+  - url: 'https://eu-west-1a.online.tableau.com'
+    description: EU West - Ireland 2
+  - url: 'https://prod-apnortheast-a.online.tableau.com'
+    description: Asia Pacific - Japan 1
+  - url: 'https://prod-apsoutheast-a.online.tableau.com'
+    description: Asia Pacific - Australia 1
+  - url: 'https://prod-uk-a.online.tableau.com'
+    description: EU West - UK 1
+  - url: 'https://prod-ca-a.online.tableau.com'
+    description: Canada - Quebec 1
