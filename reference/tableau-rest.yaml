@@ -8,7 +8,7 @@ info:
 
     There are some differences users of the classic endpoints will recognize when viewing these new endpoints. Request bodies for these new REST endpoints must be formatted using JSON. Endpoint URIs don't contain an API version number. For more information, see [REST API and Resource Versions](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm).
 
-    ![tableau platform](../assets/images/tableau-platform.png)
+    ![tableau platform](https://github.com/stephenlprice/tableau-rest-openapi/blob/main/assets/images/tableau-platform.png?raw=true)
   version: latest
   contact:
     name: Stelloprint
