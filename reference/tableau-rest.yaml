@@ -62,7 +62,7 @@ paths:
   '/api/-/settings/site/extensions/dashboard/safeListItems/{safe_list_item_luid}':
     get:
       tags:
-        - Settings
+        - Analytics Extensions
       summary: Get allowed dashboard extension on site
       description: Gets the details of a specific dashboard extension on the safe list of the site you are signed into. Permissions - This method can be called by site and server administrators.
       operationId: DashboardExtensionsSiteSettingsService_getDashboardExtensionsSafeListItem
@@ -578,3 +578,13 @@ servers:
     description: EU West - UK 1
   - url: 'https://prod-ca-a.online.tableau.com'
     description: Canada - Quebec 1
+tags:
+  - name: Analytics Extensions
+    description: |-
+      Enable and configure [analytics extensions](https://help.tableau.com/current/server/en-us/config_r_tabpy.htm) on sites and, for on premise installations, on servers. With these extensions you can extend Tableau dynamic calculations with languages like R and python, and with other tools and platforms. For more information, see [Analytics Extensions API](https://tableau.github.io/analytics-extensions-api/).
+
+      When upgrading from a server version less than 2020.2, analytics extensions must be enabled on each site even if external services were enabled on the server being upgraded. Connections for sites must be ported manually.
+
+      Using the analytics extensions settings methods you can:
+      - Enable and disable analytics extensions for a Tableau server (on-premise only) or for a site.
+      - Create and manage an extension's connections to the service hosting your custom calculations.
