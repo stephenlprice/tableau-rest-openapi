@@ -19,9 +19,6 @@ info:
 paths:
   '/api/-/settings/site/extensions/analytics/connections/{connection_luid}':
     put:
-      tags:
-        - Settings
-        - analytics extensions
       summary: Update analytics extension connection
       description: Updates a specific connection to an external service for analytics extensions on this site. Permissions - This method can be called by site and server administrators.
       operationId: AnalyticsExtensionsService_updateAnalyticsExtensionsConnection
@@ -44,6 +41,8 @@ paths:
             application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json:
               schema:
                 $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem'
+      tags:
+        - analytics extensions
     delete:
       tags:
         - Settings
