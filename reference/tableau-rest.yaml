@@ -46,8 +46,6 @@ paths:
       tags:
         - Analytics Extensions
     delete:
-      tags:
-        - Settings
       summary: Delete analytics extension connection
       description: Deletes a specific connection to an external service for analytics extensions on this site. Permissions - This method can be called by site and server administrators. Availability - This method is not available for Tableau Online.
       operationId: AnalyticsExtensionsService_deleteAnalyticsExtensionsConnection
@@ -61,6 +59,8 @@ paths:
       responses:
         default:
           description: Empty Response Body
+      tags:
+        - Analytics Extensions
   '/api/-/settings/site/extensions/dashboard/safeListItems/{safe_list_item_luid}':
     get:
       summary: Get allowed dashboard extension on site
@@ -83,8 +83,6 @@ paths:
       tags:
         - Dashboard Extensions
     put:
-      tags:
-        - Settings
       summary: Update settings for allowed dashboard extension on site
       description: Updates the settings of a specific dashboard extension in the safe list of the site you are signed into. Permissions - This method can be called by site and server administrators.
       operationId: DashboardExtensionsSiteSettingsService_updateDashboardExtensionsSafeListItem
@@ -107,9 +105,9 @@ paths:
             application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json:
               schema:
                 $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem'
-    delete:
       tags:
-        - Settings
+        - Dashboard Extensions
+    delete:
       summary: Disallow dashboard extension on site
       description: Deletes a specific dashboard extension from the safe list of the site you are signed into. Permissions - This method can be called by site and server administrators.
       operationId: DashboardExtensionsSiteSettingsService_deleteDashboardExtensionsSafeListItem
@@ -123,6 +121,8 @@ paths:
       responses:
         default:
           description: Empty Response Body
+      tags:
+        - Dashboard Extensions
   /api/-/settings/site/extensions/analytics:
     get:
       summary: Get enabled state of analytics extensions on site
@@ -140,8 +140,6 @@ paths:
       tags:
         - Analytics Extensions
     put:
-      tags:
-        - Settings
       summary: Update enabled state of analytics extensions on site
       description: Enables or disables analytics extensions on a site. Permissions - This method can be called by site and server administrators. Availability - This method is not available for Tableau Online.
       operationId: AnalyticsExtensionsService_updateAnalyticsExtensionsSiteSettings
@@ -159,6 +157,8 @@ paths:
             application/vnd.tableau.analyticsextensions.v1.SiteSettings+json:
               schema:
                 $ref: '#/components/schemas/tableau.analyticsextensions.v1.SiteSettings'
+      tags:
+        - Analytics Extensions
   /api/-/settings/site/extensions/dashboard:
     get:
       summary: List settings for dashboard extensions on site
@@ -176,8 +176,6 @@ paths:
       tags:
         - Dashboard Extensions
     put:
-      tags:
-        - Settings
       summary: Update settings for dashboard extension on site
       description: Updates the settings for dashboard extensions for the site you are signed into. Permissions - This method can be called by site and server administrators.
       operationId: DashboardExtensionsSiteSettingsService_updateDashboardExtensionsSiteSettings
@@ -195,6 +193,8 @@ paths:
             application/vnd.tableau.extensions.dashboard.v1.SiteSettings+json:
               schema:
                 $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SiteSettings'
+      tags:
+        - Dashboard Extensions
   /api/-/settings/server/extensions/dashboard/blockListItems:
     get:
       summary: List blocked dashboard extensions on server
@@ -212,8 +212,6 @@ paths:
       tags:
         - Dashboard Extensions
     post:
-      tags:
-        - Settings
       summary: Block dashboard extension on server
       description: Adds a dashboard extension to the block list of a server. Permissions - This method can only be called by server administrators. Availability - Not available for Tableau Online.
       operationId: DashboardExtensionsServerSettingsService_createDashboardExtensionsBlockListItem
@@ -231,6 +229,8 @@ paths:
             application/vnd.tableau.extensions.dashboard.v1.BlockListItem+json:
               schema:
                 $ref: '#/components/schemas/tableau.extensions.dashboard.v1.BlockListItem'
+      tags:
+        - Dashboard Extensions
   /api/-/settings/site/extensions/dashboard/safeListItems:
     get:
       summary: List allowed dashboard extensions on site
@@ -248,8 +248,6 @@ paths:
       tags:
         - Dashboard Extensions
     post:
-      tags:
-        - Settings
       summary: Allow dashboard extension on site
       description: Adds a dashboard extension to the safe list of the site you are signed into. Permissions - This method can be called by site and server administrators.
       operationId: DashboardExtensionsSiteSettingsService_createDashboardExtensionsSafeListItem
@@ -267,6 +265,8 @@ paths:
             application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json:
               schema:
                 $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem'
+      tags:
+        - Dashboard Extensions
   /api/-/settings/site/extensions/analytics/connections:
     get:
       summary: List analytics extension connections on site
@@ -284,8 +284,6 @@ paths:
       tags:
         - Analytics Extensions
     post:
-      tags:
-        - Settings
       summary: Add analytics extension connection to site
       description: Adds a connection to an external service for analytics extensions on this site. Permissions - This method can be called by site and server administrators. Availability - This method is not available for Tableau Online.
       operationId: AnalyticsExtensionsService_addAnalyticsExtensionsConnection
@@ -303,6 +301,8 @@ paths:
             application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json:
               schema:
                 $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem'
+      tags:
+        - Analytics Extensions
   /api/-/settings/server/extensions/analytics:
     get:
       summary: Get enabled state of analytics extensions on server
@@ -320,8 +320,6 @@ paths:
       tags:
         - Analytics Extensions
     put:
-      tags:
-        - Settings
       summary: Enable/disable analytics extensions on server
       description: Enables or disables analytics extensions on a server. Permissions - This method can only be called by server administrators. Availability - This method is not available for Tableau Online.
       operationId: AnalyticsExtensionsService_updateAnalyticsExtensionsServerSettings
@@ -339,6 +337,8 @@ paths:
             application/vnd.tableau.analyticsextensions.v1.ServerSettings+json:
               schema:
                 $ref: '#/components/schemas/tableau.analyticsextensions.v1.ServerSettings'
+      tags:
+        - Analytics Extensions
   '/api/-/settings/server/extensions/dashboard/blockListItems/{block_list_item_luid}':
     get:
       summary: Get blocked dashboard extension on server
@@ -362,8 +362,6 @@ paths:
       tags:
         - Dashboard Extensions
     delete:
-      tags:
-        - Settings
       summary: Unblock dashboard extension on server
       description: Deletes a specific extension from the block list of a server. Permissions - This method can only be called by server administrators. Availability - Not available for Tableau Online.
       operationId: DashboardExtensionsServerSettingsService_deleteDashboardExtensionsBlockListItem
@@ -378,6 +376,8 @@ paths:
       responses:
         default:
           description: Empty Response Body
+      tags:
+        - Dashboard Extensions
   /api/-/settings/server/extensions/dashboard:
     get:
       summary: List settings for dashboard extensions on server
@@ -395,8 +395,6 @@ paths:
       tags:
         - Dashboard Extensions
     put:
-      tags:
-        - Settings
       summary: Update settings for dashboard extensions on server
       description: Updates the settings for dashboard extensions of a server. Permissions - This method can only be called by server administrators.
       operationId: DashboardExtensionsServerSettingsService_updateDashboardExtensionsServerSettings
@@ -414,6 +412,8 @@ paths:
             application/vnd.tableau.extensions.dashboard.v1.ServerSettings+json:
               schema:
                 $ref: '#/components/schemas/tableau.extensions.dashboard.v1.ServerSettings'
+      tags:
+        - Dashboard Extensions
 components:
   schemas:
     tableau.analyticsextensions.v1.ConnectionItem:
