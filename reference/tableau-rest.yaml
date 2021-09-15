@@ -590,3 +590,14 @@ tags:
       Using the analytics extensions settings methods you can:
       - Enable and disable analytics extensions for a Tableau server (on-premise only) or for a site.
       - Create and manage an extension's connections to the service hosting your custom calculations.
+  - name: Dashboard Extensions
+    description: |-
+      Enable and configure security for [dashboard extensions](https://help.tableau.com/current/server/en-us/config_r_tabpy.htm) on sites and, for on premise installations, on servers. With these extensions you can add custom features to a dashboard using JavaScript.
+
+      Using the extension methods of the Tableau Server REST API you can:
+
+      List the settings for extensions of a server or site
+      Enable or disable extensions or sandboxed extensions for a server or site
+      List, get, create, and delete entries in server blocked extensions list
+      List, get, create, update, and delete entries in server allowed (safe) extensions list
+      This functionality relates to the UI elements and concepts described at [Manage Dashboard Settings](https://help.tableau.com/current/server/en-us/dashboard_extensions_server.htm).
