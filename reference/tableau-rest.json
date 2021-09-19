@@ -64,8 +64,7 @@
               "application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem"
-                },
-                "examples": {}
+                }
               }
             }
           }
@@ -1499,7 +1498,6 @@
             "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ConnectionBrief"
           }
         },
-        "x-examples": {},
         "description": ""
       },
       "tableau.analyticsextensions.v1.ServerSettings": {
