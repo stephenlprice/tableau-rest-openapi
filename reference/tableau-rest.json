@@ -1512,7 +1512,23 @@
           "connection_brief": {
             "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ConnectionBrief"
           }
-        }
+        },
+        "x-examples": {
+          "example-1": {
+            "connection_luid": "string",
+            "host": "string",
+            "port": -2147483648,
+            "is_auth_enabled": true,
+            "username": "string",
+            "password": "string",
+            "is_ssl_enabled": true,
+            "connection_brief": {
+              "connection_name": "string",
+              "connection_type": "UNDEFINED"
+            }
+          }
+        },
+        "description": ""
       },
       "tableau.analyticsextensions.v1.ServerSettings": {
         "properties": {
