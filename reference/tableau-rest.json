@@ -2,12 +2,22 @@
   "openapi": "3.0.1",
   "info": {
     "title": "API Reference for Tableau Resource Versioned RESTful Endpoints",
-    "description": ">The following OpenAPI documentation describes the details of the new Tableau RESTful APIs. A growing number of these are  being released alongside more than 150 [classic REST endpoints](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm)  that are currently in wide usage in the Tableau community. \n\n >There are some differences users of the classic endpoints will recognize when viewing these new endpoints. Request bodies for these new REST endpoints must  be formatted using JSON. Endpoint URIs don't contain an API version number. For more information, see  [REST API and Resource Versions](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm).",
+    "description": ">The following OpenAPI documentation describes the details of the new Tableau RESTful APIs. A growing number of these are  being released alongside more than 150 [classic REST endpoints](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm)  that are currently in wide usage in the Tableau community. \n\n >There are some differences users of the classic endpoints will recognize when viewing these new endpoints. Request bodies for these new REST endpoints must  be formatted using JSON. Endpoint URIs don't contain an API version number. For more information, see  [REST API and Resource Versions](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm).\n \n![tableau platform](https://github.com/stephenlprice/tableau-rest-openapi/blob/main/assets/images/tableau-platform.png?raw=true)",
     "version": "2021.2",
     "x-logo": {
       "url": "https://help.tableau.com/current/api/rest_api/en-us/Resources/tableau-logo.png",
       "backgroundColor": "#FFFFFF",
       "altText": "Tableau REST API"
+    },
+    "contact": {
+      "name": "stelloprint",
+      "email": "stellopricint@gmail.com",
+      "url": "https://stelloprint.stoplight.io/"
+    },
+    "termsOfService": "https://stelloprint.stoplight.io/",
+    "license": {
+      "name": "Sample",
+      "url": "https://stelloprint.stoplight.io/"
     }
   },
   "tags": [
@@ -1665,6 +1675,19 @@
         },
         "description": "The Tableau authentication header. The value is a credentials token from a Tableau server's response to an authentication request. \n\n The Content-Type and Accept headers should be the mediatype of the request and response except in cases where you want to  [explicitly allow other versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
       }
+    },
+    "securitySchemes": {
+      "X-Tableau-Auth": {
+        "name": "X-Tableau-Auth",
+        "type": "apiKey",
+        "in": "header",
+        "description": "The Tableau Server REST API requires that you send a credentials token with each request. The credentials token lets the server verify you as a valid, signed in user. To get a token, you call Sign In and pass credentials of a valid user, either a Personal Access Token (PAT) or a user name and password, along with the content URL (subpath) of the site you are signing in to.\n\nThe Content-Type and Accept headers should be the mediatype of the request and response except in cases where you want to  [explicitly allow other versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "X-Tableau-Auth": []
+    }
+  ]
 }
