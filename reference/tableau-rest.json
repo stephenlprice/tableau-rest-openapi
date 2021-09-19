@@ -64,6 +64,21 @@
               "application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json": {
                 "schema": {
                   "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem"
+                },
+                "examples": {
+                  "Example": {
+                    "connection_luid": "string",
+                    "host": "string",
+                    "port": 0,
+                    "is_auth_enabled": true,
+                    "username": "string",
+                    "password": "string",
+                    "is_ssl_enabled": true,
+                    "connection_brief": {
+                      "connection_name": "string",
+                      "connection_type": "UNDEFINED"
+                    }
+                  }
                 }
               }
             }
