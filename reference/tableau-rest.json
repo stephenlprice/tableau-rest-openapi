@@ -32,7 +32,56 @@
   ],
   "servers": [
     {
-      "url": "https://tableau.example.com/"
+      "url": "https://10ax.online.tableau.com",
+      "description": "US West (10ax)"
+    },
+    {
+      "url": "https://10ay.online.tableau.com",
+      "description": "US West (10ay)"
+    },
+    {
+      "url": "https://10az.online.tableau.com",
+      "description": "US West (10az)"
+    },
+    {
+      "url": "https://us-west-2b.online.tableau.com",
+      "description": "US West (2b)"
+    },
+    {
+      "url": "https://us-east-1.online.tableau.com",
+      "description": "US East (1)"
+    },
+    {
+      "url": "https://prod-useast-a.online.tableau.com",
+      "description": "US East (a)"
+    },
+    {
+      "url": "https://prod-useast-b.online.tableau.com",
+      "description": "US East (b)"
+    },
+    {
+      "url": "https://dub01.online.tableau.com",
+      "description": "EU West (dub01)"
+    },
+    {
+      "url": "https://eu-west-1a.online.tableau.com",
+      "description": "EU West (1a)"
+    },
+    {
+      "url": "https://prod-apnortheast-a.online.tableau.com",
+      "description": "Asia Pacific (Japan)"
+    },
+    {
+      "url": "https://prod-apsoutheast-a.online.tableau.com",
+      "description": "Asia Pacific (Australia)"
+    },
+    {
+      "url": "https://prod-uk-a.online.tableau.com",
+      "description": "EU West (uk-a)"
+    },
+    {
+      "url": "https://prod-ca-a.online.tableau.com",
+      "description": "Canada - Quebec"
     }
   ],
   "paths": {
