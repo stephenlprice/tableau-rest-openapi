@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "d721a167-3759-45b2-ace4-61ebf92bf0f3",
+        "_postman_id": "d470d85c-9f48-4d49-bb94-545d2effdcf8",
         "name": "API Reference for Tableau Resource Versioned RESTful Endpoints",
         "description": ">The following OpenAPI documentation describes the details of the new Tableau RESTful APIs. A growing number of these are  being released alongside more than 150 [classic REST endpoints](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm)  that are currently in wide usage in the Tableau community. \n\n >There are some differences users of the classic endpoints will recognize when viewing these new endpoints. Request bodies for these new REST endpoints must  be formatted using JSON. Endpoint URIs don't contain an API version number. For more information, see  [REST API and Resource Versions](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm).\n \n![tableau platform](https://github.com/stephenlprice/tableau-rest-openapi/blob/main/assets/images/tableau-platform.png?raw=true)\n\nContact Support:\n Name: stelloprint\n Email: stellopricint@gmail.com",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -11,7 +11,7 @@
             "item": [
                 {
                     "name": "Get analytics extension details",
-                    "id": "aaee7277-fba5-46c6-a7c4-73888ae4788b",
+                    "id": "445e9545-a572-494e-a870-200236c37f0e",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -38,7 +38,7 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "c34f9f1c-7138-4112-8158-da80f9423971",
+                                    "id": "9669007e-16e8-407e-b944-93154461a708",
                                     "key": "connection_luid",
                                     "value": "<string>",
                                     "description": "(Required) "
@@ -49,7 +49,7 @@
                     },
                     "response": [
                         {
-                            "id": "4edbc07e-f923-4c1a-9d76-3e5480c1ac79",
+                            "id": "6eff66ae-6410-4a0e-a4bf-d6674bdf0cc3",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "GET",
@@ -104,7 +104,7 @@
                 },
                 {
                     "name": "Update analytics extension connection of site",
-                    "id": "c60c39a3-430b-4f35-b92f-e4c89904a01f",
+                    "id": "450293df-1cc0-415c-80ce-b8ac4141eefd",
                     "request": {
                         "method": "PUT",
                         "header": [
@@ -139,7 +139,7 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "88d47b74-4504-433e-bf7c-cf0ca98d3940",
+                                    "id": "c73dedf1-3011-40d7-ae09-907f6d89d481",
                                     "key": "connection_luid",
                                     "value": "<string>",
                                     "description": "(Required) "
@@ -150,7 +150,7 @@
                     },
                     "response": [
                         {
-                            "id": "d9f161c9-04ab-4746-800f-c93dc3ea971d",
+                            "id": "2dcd3bca-de4a-4867-b71f-fb817dcd4c83",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -206,7 +206,7 @@
                             "body": "{\n \"connection_luid\": \"<string>\",\n \"host\": \"<string>\",\n \"port\": \"<integer>\",\n \"is_auth_enabled\": \"<boolean>\",\n \"username\": \"<string>\",\n \"password\": \"<string>\",\n \"is_ssl_enabled\": \"<boolean>\",\n \"connection_brief\": {\n  \"connection_name\": \"<string>\",\n  \"connection_type\": \"<string>\"\n }\n}"
                         },
                         {
-                            "id": "68fa314c-a3d5-42b4-97c5-26dec827b201",
+                            "id": "bcfb9e8a-f43c-4427-9c01-30b6695bce65",
                             "name": "Bad request.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -262,7 +262,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "d9c90c25-95f7-40c5-b3ae-a495bf2905bc",
+                            "id": "6fb16518-03e6-4ca9-87e7-d59320235fbf",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "PUT",
@@ -318,7 +318,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "509ae611-33bb-4f24-8e44-7364154f0942",
+                            "id": "b5c36977-15fa-4ce0-9797-9c5441a1e225",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -374,7 +374,7 @@
                             "body": ""
                         },
                         {
-                            "id": "6d70ae6f-4b4e-4d13-b4be-3a609c063d01",
+                            "id": "3140e4d4-5060-4311-8beb-bfe675ad1416",
                             "name": "The connection does not exist.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -433,7 +433,7 @@
                 },
                 {
                     "name": "Delete analytics extension connection from site",
-                    "id": "62f1910e-fe9d-4c17-b8c5-184d0ce52c78",
+                    "id": "20dfca8e-9c29-4741-8871-92a27889613c",
                     "request": {
                         "method": "DELETE",
                         "header": [
@@ -460,7 +460,7 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "1900353c-23d6-4894-8bc4-af2c9c10a3fc",
+                                    "id": "958bf39a-7d89-40d9-8f9f-d0750a87b35c",
                                     "key": "connection_luid",
                                     "value": "<string>",
                                     "description": "(Required) "
@@ -471,7 +471,7 @@
                     },
                     "response": [
                         {
-                            "id": "5d27d403-251e-4bdc-99b7-1f7d77fb6a94",
+                            "id": "eed43e99-892e-44ce-81ea-ef112a6cdbee",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "DELETE",
@@ -523,7 +523,7 @@
                             "body": ""
                         },
                         {
-                            "id": "297e2de3-6158-47ba-b02b-43a82b6e0416",
+                            "id": "f6a88ff4-6db7-412b-8b0d-6393eb4fddfc",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "DELETE",
@@ -575,7 +575,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "7ccc603e-00f1-42f9-9d09-5a19df2cffda",
+                            "id": "9d82ebbd-a308-4595-81fe-285f23050b1f",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "DELETE",
@@ -627,7 +627,7 @@
                             "body": ""
                         },
                         {
-                            "id": "5db9bca4-fab2-4f4f-bbdb-090c866ad5d4",
+                            "id": "95da63d7-3615-4648-8540-891ee4942392",
                             "name": "The connection does not exist.",
                             "originalRequest": {
                                 "method": "DELETE",
@@ -682,7 +682,7 @@
                 },
                 {
                     "name": "List analytics extension connections of workbook",
-                    "id": "6e685242-b906-4682-96cf-eec24fbe1ccb",
+                    "id": "2a80201f-80e6-4c20-8a24-e823d0d29a62",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -710,7 +710,7 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "49e73562-ad74-46f5-8449-b2048786cf7f",
+                                    "id": "a44d5a19-b1a3-478a-b382-3defb14baac2",
                                     "key": "workbook_luid",
                                     "value": "<string>",
                                     "description": "(Required) "
@@ -721,7 +721,7 @@
                     },
                     "response": [
                         {
-                            "id": "196d3517-5a8b-4f45-a852-f2af5faff903",
+                            "id": "1c306569-ae34-4481-9905-1591e84f8ccf",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "GET",
@@ -777,7 +777,7 @@
                 },
                 {
                     "name": "Get current analytics extension for workbook",
-                    "id": "c1d8bb45-73b3-4087-a6c6-302990bcc58e",
+                    "id": "03ff6e36-b48e-498b-b1c3-73f0568c7d67",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -805,7 +805,7 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "0ebb9927-5f7a-4060-82c4-a27f8c6d0393",
+                                    "id": "5f4955fa-a8f0-44fe-81f9-13285553ebd9",
                                     "key": "workbook_luid",
                                     "value": "<string>",
                                     "description": "(Required) "
@@ -816,7 +816,7 @@
                     },
                     "response": [
                         {
-                            "id": "e572d6a1-9f9e-4491-b580-b9f2e7c2a987",
+                            "id": "eaa37384-b4a7-4253-9659-0cb4491497d8",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "GET",
@@ -872,7 +872,7 @@
                 },
                 {
                     "name": "Update analytics extension for workbook",
-                    "id": "888640ea-a437-4e27-a2c1-9e3540b46e88",
+                    "id": "b3055329-3e4b-486a-a449-064130498636",
                     "request": {
                         "method": "PUT",
                         "header": [
@@ -908,7 +908,7 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "116fbb7e-0d2f-4dfd-a5fb-8ad03085af6c",
+                                    "id": "4ef626c5-98fc-4d50-9c20-fc77fca42e66",
                                     "key": "workbook_luid",
                                     "value": "<string>",
                                     "description": "(Required) "
@@ -919,7 +919,7 @@
                     },
                     "response": [
                         {
-                            "id": "972e89cb-9c8c-4a03-8545-fa8a71705860",
+                            "id": "067d0557-4057-4dc0-93d0-1bf1652f7814",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -979,7 +979,7 @@
                 },
                 {
                     "name": "Remove current analytics extension connection for workbook",
-                    "id": "97d22577-4421-4265-9d8a-f7f6779fd420",
+                    "id": "b39c26ed-3d6a-4c26-92eb-8730a313cae3",
                     "request": {
                         "method": "DELETE",
                         "header": [
@@ -1007,7 +1007,7 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "6eb270ea-b4fd-4c8a-9d75-6b7ebd623840",
+                                    "id": "81cca513-6016-4935-9c79-4cca7a94357c",
                                     "key": "workbook_luid",
                                     "value": "<string>",
                                     "description": "(Required) "
@@ -1018,7 +1018,7 @@
                     },
                     "response": [
                         {
-                            "id": "e13848dc-7ed8-4630-a051-6b0b04c6037a",
+                            "id": "ed35c308-aea8-483f-800c-a48dd86d559e",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "DELETE",
@@ -1074,7 +1074,7 @@
                 },
                 {
                     "name": "Get enabled state of analytics extensions on site",
-                    "id": "ba0ff81f-bff5-4928-af74-ff1679bd8ae5",
+                    "id": "cf60146d-ebbe-473c-80b0-c6b77d46cbe2",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -1102,7 +1102,7 @@
                     },
                     "response": [
                         {
-                            "id": "d08e4dd4-e002-46bc-9822-8e5edf282c4e",
+                            "id": "0bb763cf-f928-4094-a623-7472150814cf",
                             "name": "Success.",
                             "originalRequest": {
                                 "method": "GET",
@@ -1147,7 +1147,7 @@
                             "body": "{\n \"enabled\": \"<boolean>\"\n}"
                         },
                         {
-                            "id": "14d6f157-1cf5-4582-9ced-a5f4966c157e",
+                            "id": "6366481d-ba67-4cb8-96e7-6f00f0f80cce",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "GET",
@@ -1192,7 +1192,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "d4f43d55-419e-4ac0-9bb6-5c5696ff9c85",
+                            "id": "73cfa60f-7b1c-4e60-abd6-bc55ec9d4be7",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "GET",
@@ -1240,7 +1240,7 @@
                 },
                 {
                     "name": "Update enabled state of analytics extensions on site",
-                    "id": "d7059e58-7b92-44f0-9c86-0bd4eb748994",
+                    "id": "8f9b63db-ae57-47ff-922d-5d9cb7be2e81",
                     "request": {
                         "method": "PUT",
                         "header": [
@@ -1276,7 +1276,7 @@
                     },
                     "response": [
                         {
-                            "id": "5d3005a3-a684-4f18-a1f8-1a9999d48b00",
+                            "id": "c544740e-b366-4552-bdc1-82a6b028fa8c",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -1325,7 +1325,7 @@
                             "body": "{\n \"enabled\": \"<boolean>\"\n}"
                         },
                         {
-                            "id": "1022028b-362e-4ca8-95cc-f53fa20a168a",
+                            "id": "b9551196-963e-4240-82e7-c6860cb3c5e9",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "PUT",
@@ -1374,7 +1374,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "18246dfe-21e8-4086-9d8d-d2449d07201d",
+                            "id": "1da784eb-7a54-4e94-b995-8e415fae8217",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -1426,7 +1426,7 @@
                 },
                 {
                     "name": "List analytics extension connections on site",
-                    "id": "1c54da14-5877-4a83-b82b-d5f39af5b078",
+                    "id": "0449a877-a3b9-4fbf-b5b3-fba72c182f01",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -1455,7 +1455,7 @@
                     },
                     "response": [
                         {
-                            "id": "2b5e3cf7-c06d-4a66-929b-add9f873d985",
+                            "id": "c5ee45df-77b9-4174-9543-486ae4c5bc6d",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "GET",
@@ -1501,7 +1501,7 @@
                             "body": "{\n \"connectionList\": [\n  {\n   \"connection_luid\": \"<string>\",\n   \"host\": \"<string>\",\n   \"port\": \"<integer>\",\n   \"is_auth_enabled\": \"<boolean>\",\n   \"username\": \"<string>\",\n   \"password\": \"<string>\",\n   \"is_ssl_enabled\": \"<boolean>\",\n   \"connection_brief\": {\n    \"connection_name\": \"<string>\",\n    \"connection_type\": \"<string>\"\n   }\n  },\n  {\n   \"connection_luid\": \"<string>\",\n   \"host\": \"<string>\",\n   \"port\": \"<integer>\",\n   \"is_auth_enabled\": \"<boolean>\",\n   \"username\": \"<string>\",\n   \"password\": \"<string>\",\n   \"is_ssl_enabled\": \"<boolean>\",\n   \"connection_brief\": {\n    \"connection_name\": \"<string>\",\n    \"connection_type\": \"<string>\"\n   }\n  }\n ]\n}"
                         },
                         {
-                            "id": "fdc1b137-dd37-499d-bae9-3cd2f6902c7c",
+                            "id": "1268b2cd-445c-47d7-8953-d00cc61976d9",
                             "name": "Bad Request.",
                             "originalRequest": {
                                 "method": "GET",
@@ -1547,7 +1547,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "a5d129b6-ad1d-4648-9641-cd6465e3fe2d",
+                            "id": "9a0e7e78-382e-42de-82a0-261a7e851a11",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "GET",
@@ -1593,7 +1593,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "8e7a0424-ea89-435d-8989-4960acff3728",
+                            "id": "75c9ddce-e010-4fc2-933f-3a658f184ecc",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "GET",
@@ -1642,7 +1642,7 @@
                 },
                 {
                     "name": "Add analytics extension connection to site",
-                    "id": "a2739dbe-d36f-4b6c-92e7-49e8208f2500",
+                    "id": "0ec69781-5983-424b-b99d-f0c6bb8ce10a",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -1679,7 +1679,7 @@
                     },
                     "response": [
                         {
-                            "id": "dfe16b60-1d64-412c-a0d6-2f80132514f4",
+                            "id": "119e4e49-a44b-45d9-9d7f-5a61b3c5a622",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "POST",
@@ -1729,7 +1729,7 @@
                             "body": "{\n \"connection_luid\": \"<string>\",\n \"host\": \"<string>\",\n \"port\": \"<integer>\",\n \"is_auth_enabled\": \"<boolean>\",\n \"username\": \"<string>\",\n \"password\": \"<string>\",\n \"is_ssl_enabled\": \"<boolean>\",\n \"connection_brief\": {\n  \"connection_name\": \"<string>\",\n  \"connection_type\": \"<string>\"\n }\n}"
                         },
                         {
-                            "id": "acab460e-f774-4077-ac68-385c2e8ed98e",
+                            "id": "8525ef8f-9940-45b1-a36c-747f56c7c818",
                             "name": "Bad request.",
                             "originalRequest": {
                                 "method": "POST",
@@ -1779,7 +1779,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "ad8598c8-3156-4a5e-81fe-0ae68ce57c74",
+                            "id": "61c32574-5227-46b0-8a85-270d05a0bd88",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "POST",
@@ -1829,7 +1829,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "67e11ae4-c1ed-42a4-98dc-3de4ddf1d7a0",
+                            "id": "40538cb1-5afb-485e-9b94-ae7b6385e476",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "POST",
@@ -1882,7 +1882,7 @@
                 },
                 {
                     "name": "Get enabled state of analytics extensions on server",
-                    "id": "32ad39af-5e0f-44bf-b6fd-3699aa834c8f",
+                    "id": "e168eb08-3a9c-4604-b009-532662dae1e9",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -1910,7 +1910,7 @@
                     },
                     "response": [
                         {
-                            "id": "b9ba07f7-977e-4cf9-9a58-6d5676660044",
+                            "id": "b1bea40a-dabb-46df-bf68-18d284d96df5",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "GET",
@@ -1955,7 +1955,7 @@
                             "body": "{\n \"enabled\": \"<boolean>\"\n}"
                         },
                         {
-                            "id": "bfbedcd3-b5e0-4299-8f40-e136d33f2072",
+                            "id": "f097f07d-d061-4cfc-a9fc-bbf63c559891",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "GET",
@@ -2000,7 +2000,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "7b9d1adc-d00c-4b66-9fd7-d594138339c9",
+                            "id": "8d128b97-5a5c-48ca-a8c9-014b2c0132df",
                             "name": "Server  permissions are required for this request.",
                             "originalRequest": {
                                 "method": "GET",
@@ -2048,7 +2048,7 @@
                 },
                 {
                     "name": "Enable/disable analytics extensions on server",
-                    "id": "e593a190-f469-4550-834b-3c316de2c52f",
+                    "id": "064233ce-594f-4e7e-a847-887a6a856d1b",
                     "request": {
                         "method": "PUT",
                         "header": [
@@ -2084,7 +2084,7 @@
                     },
                     "response": [
                         {
-                            "id": "ddacd929-533d-452c-ac80-7e630c5ba098",
+                            "id": "9c7c3f9f-9092-42ab-bc04-f11ee0474e0f",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -2133,7 +2133,7 @@
                             "body": "{\n \"enabled\": \"<boolean>\"\n}"
                         },
                         {
-                            "id": "e4fb3e6f-da20-4858-8a03-5f31d7ed730a",
+                            "id": "c4bf060d-2745-4d69-af3e-79aa04a63169",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "PUT",
@@ -2182,7 +2182,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "383a2058-e3ee-4e5a-9fd6-ae2a405677bc",
+                            "id": "65b1154f-fa8c-437f-95e6-5ce0b66a0101",
                             "name": "Server  permissions are required for this request.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -2233,7 +2233,7 @@
                     ]
                 }
             ],
-            "id": "278b5788-8bed-4cdd-a762-771a36c0180e",
+            "id": "e3f5b2a2-ec16-4048-b7c6-3899669eec65",
             "description": "Enable and configure [analytics extensions](https://help.tableau.com/current/server/en-us/config_r_tabpy.htm) on sites and, for on premise installations, on servers. With these extensions you can extend Tableau dynamic calculations with languages like R and python, and with other tools and platforms. For more information, see [Analytics Extensions API](https://tableau.github.io/analytics-extensions-api/). \n\nWhen upgrading from a server version less than 2020.2, analytics extensions must be enabled on each site even if external services were enabled on the server being upgraded. Connections for sites must be ported manually. \n\nUsing the analytics extensions settings methods you can: <ul> <li>Enable and disable analytics extensions for a Tableau server (on-premise only) or for a site.</li> <li>Create and manage an extension's connections to the service hosting your custom calculations.</li> </ul>"
         },
         {
@@ -2241,7 +2241,7 @@
             "item": [
                 {
                     "name": "Get allowed dashboard extension on site",
-                    "id": "39f7789b-455f-4b29-8f3b-f3968dce1ce3",
+                    "id": "7dc82579-cc47-4a9e-90e5-63610178dd94",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -2268,7 +2268,7 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "fb55a6b7-349b-48d8-b8e3-257aa1d3f7c9",
+                                    "id": "e6fc9446-ecd8-47e2-a5a2-dc82edef09a5",
                                     "key": "safe_list_item_luid",
                                     "value": "<string>",
                                     "description": "(Required) "
@@ -2279,7 +2279,7 @@
                     },
                     "response": [
                         {
-                            "id": "85e09e97-ebb8-44b6-8c42-05bc74db349b",
+                            "id": "d3b4a5c2-6a81-4edc-a97e-24032c8b3adc",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "GET",
@@ -2331,7 +2331,7 @@
                             "body": "{\n \"safe_list_item_luid\": \"<string>\",\n \"url\": \"<string>\",\n \"allow_full_data\": \"<boolean>\",\n \"prompt_needed\": \"<boolean>\"\n}"
                         },
                         {
-                            "id": "44e57b1d-3084-424e-8368-9004cf880e3d",
+                            "id": "8e89aebf-569b-404c-8156-bdcf01c14f9a",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "GET",
@@ -2383,7 +2383,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "67ae1626-d3fb-4522-80b2-38c932e606be",
+                            "id": "26e92ee3-62be-4126-93b8-c24fce3cf48f",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "GET",
@@ -2435,7 +2435,7 @@
                             "body": ""
                         },
                         {
-                            "id": "56902100-5d5b-42a7-8431-3ae0eed5eee4",
+                            "id": "39c9d5a1-1fe6-4a31-b8de-0da65fbc7492",
                             "name": "Unable to find a safe list item with given LUID.",
                             "originalRequest": {
                                 "method": "GET",
@@ -2490,7 +2490,7 @@
                 },
                 {
                     "name": "Update settings for allowed dashboard extension on site",
-                    "id": "92aa3d59-5eb2-40a5-ae69-7c3fa8c3a6c4",
+                    "id": "ebd75f06-7b93-40fe-9f26-50191f65dc71",
                     "request": {
                         "method": "PUT",
                         "header": [
@@ -2525,7 +2525,7 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "94edcb55-5083-40ac-aa57-790056aeab30",
+                                    "id": "2a5b72e8-cc4a-4aee-a406-95d6f6fc205a",
                                     "key": "safe_list_item_luid",
                                     "value": "",
                                     "description": "(Required) "
@@ -2536,7 +2536,7 @@
                     },
                     "response": [
                         {
-                            "id": "f2e64e16-cfba-448d-afed-787ae99cfec0",
+                            "id": "0fbf27e2-da0e-4b26-8a42-b89db64d88e7",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -2592,7 +2592,7 @@
                             "body": "{\n \"safe_list_item_luid\": \"<string>\",\n \"url\": \"<string>\",\n \"allow_full_data\": \"<boolean>\",\n \"prompt_needed\": \"<boolean>\"\n}"
                         },
                         {
-                            "id": "fc939c86-1da2-4e16-9b72-4fd96deb9fcb",
+                            "id": "9dbd353a-25ac-4d20-8baf-fde7af55ed0a",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "PUT",
@@ -2648,7 +2648,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "e4d57dca-5634-472a-b099-3d360c0f2ebd",
+                            "id": "8a6479e1-a9c6-466d-813a-9d3583ca2355",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -2704,7 +2704,7 @@
                             "body": ""
                         },
                         {
-                            "id": "cee6073f-18c8-4b22-aba4-447a7642786f",
+                            "id": "69460cb5-3074-4b9b-91b5-9d2dc785760c",
                             "name": "Unable to find a safe list item with given LUID.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -2763,7 +2763,7 @@
                 },
                 {
                     "name": "Disallow dashboard extension on site",
-                    "id": "3bf269db-4018-4e5d-a019-795fd3bea4bd",
+                    "id": "aae6b037-588d-486d-bea5-09f83ce9d368",
                     "request": {
                         "method": "DELETE",
                         "header": [
@@ -2790,7 +2790,7 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "e956f86e-3a1b-4491-9c94-e42920382931",
+                                    "id": "bb6df4f3-a954-4d94-bd47-8857987b5555",
                                     "key": "safe_list_item_luid",
                                     "value": "<string>",
                                     "description": "(Required) "
@@ -2801,7 +2801,7 @@
                     },
                     "response": [
                         {
-                            "id": "161d29e7-ac46-4b94-8ef1-064e1d9a6a3b",
+                            "id": "f90652f3-e84f-4276-aa2b-28e0a64e61fe",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "DELETE",
@@ -2853,7 +2853,7 @@
                             "body": ""
                         },
                         {
-                            "id": "f38e6faf-b579-4089-9c2a-09ed190bc7b9",
+                            "id": "069289aa-cb54-43e8-a970-92ce74de5b6f",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "DELETE",
@@ -2905,7 +2905,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "d8834ad3-0461-4671-9cc7-b121bf5af1dc",
+                            "id": "8c10d404-8e78-4e8f-aa1d-9f8ef5a9b9cd",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "DELETE",
@@ -2957,7 +2957,7 @@
                             "body": ""
                         },
                         {
-                            "id": "e8ff136a-bf6b-4bee-bd04-f5bac663d15e",
+                            "id": "a621f184-1da2-4aa3-8ed1-0b378208437f",
                             "name": "Unable to find a safe list item with given LUID.",
                             "originalRequest": {
                                 "method": "DELETE",
@@ -3012,7 +3012,7 @@
                 },
                 {
                     "name": "List dashboard extension settings of site",
-                    "id": "e8aa6289-f93d-44ff-b0b5-8a390bb18e4f",
+                    "id": "db53582f-4569-4857-9fa6-5c276fae6516",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -3040,7 +3040,7 @@
                     },
                     "response": [
                         {
-                            "id": "b62c90b3-5100-4ce6-8c9b-ac455026c8b6",
+                            "id": "717d5711-5f5f-4fc9-8152-330d6a59ecb0",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "GET",
@@ -3085,7 +3085,7 @@
                             "body": "{\n \"extensions_enabled\": \"<boolean>\",\n \"allow_sandboxed\": \"<boolean>\",\n \"safe_list_items\": [\n  {\n   \"safe_list_item_luid\": \"<string>\",\n   \"url\": \"<string>\",\n   \"allow_full_data\": \"<boolean>\",\n   \"prompt_needed\": \"<boolean>\"\n  },\n  {\n   \"safe_list_item_luid\": \"<string>\",\n   \"url\": \"<string>\",\n   \"allow_full_data\": \"<boolean>\",\n   \"prompt_needed\": \"<boolean>\"\n  }\n ]\n}"
                         },
                         {
-                            "id": "a323a0a6-4460-4db6-b6ce-0fe053bc30e3",
+                            "id": "9f0b20e0-1f0e-42fa-858a-a809646207d7",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "GET",
@@ -3130,7 +3130,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "35aec7f8-6481-42a1-a1d1-fc9aff90e2c0",
+                            "id": "ecef112d-b0c6-4e9b-95df-795b4a95549f",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "GET",
@@ -3178,7 +3178,7 @@
                 },
                 {
                     "name": "Update dashboard extension settings of site",
-                    "id": "2bbf33e7-d954-4050-a2c4-9034ea289bfa",
+                    "id": "4231085b-9973-48f4-9bbe-385c9cf2c0af",
                     "request": {
                         "method": "PUT",
                         "header": [
@@ -3214,7 +3214,7 @@
                     },
                     "response": [
                         {
-                            "id": "0d62888d-a8ed-4615-9538-dfe62dd87f9e",
+                            "id": "50cb2bc7-9f0f-4b9d-9a1f-2b8b29e6c7c8",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -3263,7 +3263,7 @@
                             "body": "{\n \"extensions_enabled\": \"<boolean>\",\n \"allow_sandboxed\": \"<boolean>\",\n \"safe_list_items\": [\n  {\n   \"safe_list_item_luid\": \"<string>\",\n   \"url\": \"<string>\",\n   \"allow_full_data\": \"<boolean>\",\n   \"prompt_needed\": \"<boolean>\"\n  },\n  {\n   \"safe_list_item_luid\": \"<string>\",\n   \"url\": \"<string>\",\n   \"allow_full_data\": \"<boolean>\",\n   \"prompt_needed\": \"<boolean>\"\n  }\n ]\n}"
                         },
                         {
-                            "id": "f5a13c1b-2148-471e-a74a-e169ff209597",
+                            "id": "a3f0ae45-c921-4266-87d0-8026efcf7dc6",
                             "name": "The request body is malformed.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -3312,7 +3312,7 @@
                             "body": ""
                         },
                         {
-                            "id": "cb274816-916f-4c8c-859a-5df5fc425d43",
+                            "id": "b6ad704d-8369-4850-aa9d-7c268a586bab",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "PUT",
@@ -3361,7 +3361,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "6166f187-5665-4b61-8d65-fa5b4f2bf0c6",
+                            "id": "54b8a8de-fbec-43ec-b107-844ec212f970",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -3413,7 +3413,7 @@
                 },
                 {
                     "name": "List blocked dashboard extensions on server",
-                    "id": "f815e041-7472-4759-b8c0-e793695067bc",
+                    "id": "e354a2b7-6dc9-4427-9009-54fee07c8362",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -3442,7 +3442,7 @@
                     },
                     "response": [
                         {
-                            "id": "03602afd-b14e-46ea-aa7e-d6a74497dce8",
+                            "id": "20a88112-6f09-42d0-9da3-13f4c553400b",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "GET",
@@ -3488,7 +3488,7 @@
                             "body": "{\n \"block_list_items\": [\n  {\n   \"url\": \"<string>\",\n   \"block_list_item_luid\": \"<string>\"\n  },\n  {\n   \"url\": \"<string>\",\n   \"block_list_item_luid\": \"<string>\"\n  }\n ]\n}"
                         },
                         {
-                            "id": "09fb068f-5417-4e65-bef0-846ba45024a2",
+                            "id": "a58947cc-962f-41b7-9392-4c6d4f284781",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "GET",
@@ -3534,7 +3534,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "8025b21a-b692-4041-85a1-e0c5f6163aca",
+                            "id": "3f6b9677-2504-41be-938c-0ca3b282808f",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "GET",
@@ -3583,7 +3583,7 @@
                 },
                 {
                     "name": "Block dashboard extension on server",
-                    "id": "e01f5cba-332e-4996-ad92-2d0db3b95873",
+                    "id": "bf14afeb-56ce-4a9e-a5c3-6c72ed63a2fb",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -3620,7 +3620,7 @@
                     },
                     "response": [
                         {
-                            "id": "c8ece35a-ff7a-4937-967d-42beb6d7a192",
+                            "id": "789cf81e-de88-49e7-92a8-367f1da8f58a",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "POST",
@@ -3670,7 +3670,7 @@
                             "body": "{\n \"url\": \"<string>\",\n \"block_list_item_luid\": \"<string>\"\n}"
                         },
                         {
-                            "id": "0df7aa5e-b790-469b-87bd-6b2fd53d9c5a",
+                            "id": "d973b612-4f68-476d-b354-55f781a7b5b6",
                             "name": "The request body is malformed.",
                             "originalRequest": {
                                 "method": "POST",
@@ -3720,7 +3720,7 @@
                             "body": ""
                         },
                         {
-                            "id": "16fb6a34-01ba-4c1f-9ae6-da7c070ffc12",
+                            "id": "3508a2ed-edbe-4770-9b31-34ea13c1ce8b",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "POST",
@@ -3770,7 +3770,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "9b81c200-757a-4420-bcf1-981dacd181ef",
+                            "id": "43f93c79-89a9-4a69-9180-45fc982ff675",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "POST",
@@ -3823,7 +3823,7 @@
                 },
                 {
                     "name": "Lists allowed dashboard extensions on site",
-                    "id": "cf295629-7e5e-47f9-8b02-629d2922a52b",
+                    "id": "8ed5e7b0-361e-4651-9179-99cf5f876d13",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -3852,7 +3852,7 @@
                     },
                     "response": [
                         {
-                            "id": "b8cfe63d-7fba-4bbe-a81b-7e60b8fccabd",
+                            "id": "223972cb-ebfc-4dde-9b08-80f8d4f92685",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "GET",
@@ -3898,7 +3898,7 @@
                             "body": "{\n \"safe_list_items\": [\n  {\n   \"safe_list_item_luid\": \"<string>\",\n   \"url\": \"<string>\",\n   \"allow_full_data\": \"<boolean>\",\n   \"prompt_needed\": \"<boolean>\"\n  },\n  {\n   \"safe_list_item_luid\": \"<string>\",\n   \"url\": \"<string>\",\n   \"allow_full_data\": \"<boolean>\",\n   \"prompt_needed\": \"<boolean>\"\n  }\n ]\n}"
                         },
                         {
-                            "id": "4d2593bb-9b2f-4289-84e6-33e860ca0fec",
+                            "id": "2d0ce575-e6ea-40d3-80ec-9d6f7720ad12",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "GET",
@@ -3944,7 +3944,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "33fd9a66-df14-4e06-b940-378a73ce0173",
+                            "id": "bdaf72b9-8e0e-4a3d-91fb-bda61f113b00",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "GET",
@@ -3993,7 +3993,7 @@
                 },
                 {
                     "name": "Allow dashboard extension on site",
-                    "id": "31cefbca-da1f-46d6-b625-306deb22c81c",
+                    "id": "2753c5ae-318b-4106-8afe-ebcd5c37555c",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -4030,7 +4030,7 @@
                     },
                     "response": [
                         {
-                            "id": "78e667b9-24f7-44e6-b72b-d1c410e6675b",
+                            "id": "af77d71b-5e64-4b0b-b007-207c1d1e00df",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "POST",
@@ -4080,7 +4080,7 @@
                             "body": "{\n \"safe_list_item_luid\": \"<string>\",\n \"url\": \"<string>\",\n \"allow_full_data\": \"<boolean>\",\n \"prompt_needed\": \"<boolean>\"\n}"
                         },
                         {
-                            "id": "8c505ae6-7ae5-4256-82cb-6a42ec6e5507",
+                            "id": "486186aa-4558-4b39-b57f-299f39b04ab6",
                             "name": "The request body is malformed.",
                             "originalRequest": {
                                 "method": "POST",
@@ -4130,7 +4130,7 @@
                             "body": ""
                         },
                         {
-                            "id": "ddce1923-b16c-44ed-b71a-2289a53ad039",
+                            "id": "70034c91-4082-4d3d-9879-5594cb705f69",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "POST",
@@ -4180,7 +4180,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "44ea24b6-778b-4c92-8150-2744099eccfe",
+                            "id": "ceeed81d-1ec1-4492-9ce1-4310a9f5697d",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "POST",
@@ -4233,7 +4233,7 @@
                 },
                 {
                     "name": "Get blocked dashboard extension on server",
-                    "id": "7f076e2d-915b-4ffb-acfc-d9f20fe1869c",
+                    "id": "cd2360c6-23c4-41b5-8a66-e6a1ae5df905",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -4260,7 +4260,7 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "399071c6-efa9-4c6a-8142-e260540ccea0",
+                                    "id": "2af63214-48f6-45db-802f-d6f14a215a61",
                                     "key": "block_list_item_luid",
                                     "value": "<string>",
                                     "description": "(Required) "
@@ -4271,7 +4271,7 @@
                     },
                     "response": [
                         {
-                            "id": "b98450ee-ca18-4e30-ada2-5f103ec2384d",
+                            "id": "5d8bb868-8d70-49b5-9267-f95e59dad7e9",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "GET",
@@ -4323,7 +4323,7 @@
                             "body": "{\n \"url\": \"<string>\",\n \"block_list_item_luid\": \"<string>\"\n}"
                         },
                         {
-                            "id": "c7bceb3b-33de-46bf-978f-6b1b1f288cd4",
+                            "id": "6d9e1773-2e05-48e9-b7b7-f33e2af0f208",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "GET",
@@ -4375,7 +4375,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "ff42850c-013f-47f2-9bf9-f76115c2e4a7",
+                            "id": "4e4c7b7b-d6af-4011-80bc-a5accd1cf1e7",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "GET",
@@ -4427,7 +4427,7 @@
                             "body": ""
                         },
                         {
-                            "id": "e662747e-5f8c-44be-a940-d48d164aeb97",
+                            "id": "04f43203-66ee-434e-84cd-10400b925b95",
                             "name": "Unable to find a block list item with given LUID.",
                             "originalRequest": {
                                 "method": "GET",
@@ -4482,7 +4482,7 @@
                 },
                 {
                     "name": "Unblock dashboard extension on server",
-                    "id": "de7a14c2-05ed-4a62-8c04-c563919ab75a",
+                    "id": "8c9d47f0-ce46-45ab-9eb0-4cc8032c5c1d",
                     "request": {
                         "method": "DELETE",
                         "header": [
@@ -4509,7 +4509,7 @@
                             ],
                             "variable": [
                                 {
-                                    "id": "a2231b2f-9b13-46f2-b4b5-099d9b05d1bf",
+                                    "id": "f81e9c35-d7e8-422b-a345-0f11bbefec67",
                                     "key": "block_list_item_luid",
                                     "value": "<string>",
                                     "description": "(Required) "
@@ -4520,7 +4520,7 @@
                     },
                     "response": [
                         {
-                            "id": "51c96503-ed53-4751-aa7c-69f7e4f7f656",
+                            "id": "53f22a7a-bc64-43b4-b393-3d6f4c088b9b",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "DELETE",
@@ -4572,7 +4572,7 @@
                             "body": ""
                         },
                         {
-                            "id": "59c4ff8c-3289-4f45-8f59-487011aea81a",
+                            "id": "161e9d1d-531c-437d-b3e3-e8d51ec0dc69",
                             "name": "User could not be authenticated",
                             "originalRequest": {
                                 "method": "DELETE",
@@ -4624,7 +4624,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "191e217b-3476-4f6f-8f7d-d0afb0460f0a",
+                            "id": "3e768db8-d7b1-4e90-88aa-a432b2c6c5df",
                             "name": "Server or site administrator permissions are required for this request.",
                             "originalRequest": {
                                 "method": "DELETE",
@@ -4676,7 +4676,7 @@
                             "body": ""
                         },
                         {
-                            "id": "6f7aa262-b585-46bf-9acb-ddc1e580e95e",
+                            "id": "e9dcdb54-037d-4d4c-8a47-4f9793075e20",
                             "name": "Unable to find a block list item with given LUID.",
                             "originalRequest": {
                                 "method": "DELETE",
@@ -4731,7 +4731,7 @@
                 },
                 {
                     "name": "List dashboard extension settings of server",
-                    "id": "cce85833-0a8d-48bf-ba40-2f45d0b6d769",
+                    "id": "7677b653-6e13-4e7a-83dc-6500cea42cca",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -4759,7 +4759,7 @@
                     },
                     "response": [
                         {
-                            "id": "034273e1-f3af-4ff2-a533-8176913ac8fc",
+                            "id": "eac72ca3-d4cd-4ba7-8a72-5ab31f48451e",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "GET",
@@ -4804,7 +4804,7 @@
                             "body": "{\n \"block_list_items\": [\n  {\n   \"url\": \"<string>\",\n   \"block_list_item_luid\": \"<string>\"\n  },\n  {\n   \"url\": \"<string>\",\n   \"block_list_item_luid\": \"<string>\"\n  }\n ],\n \"extensions_enabled\": \"<boolean>\"\n}"
                         },
                         {
-                            "id": "4a2be936-a132-42f7-b6f4-ccdfecf41a45",
+                            "id": "2f05834e-a50d-45fc-b9c8-165173648201",
                             "name": "The request body is malformed.",
                             "originalRequest": {
                                 "method": "GET",
@@ -4849,7 +4849,7 @@
                             "body": ""
                         },
                         {
-                            "id": "7bf026d5-9579-4a6a-b1a1-8aeabf7d6e0c",
+                            "id": "1792755a-7901-4170-a4c8-3576ac40819a",
                             "name": "User could not be authenticated.",
                             "originalRequest": {
                                 "method": "GET",
@@ -4894,7 +4894,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "8e19a14c-e6b8-492d-8662-c080d21d6041",
+                            "id": "3f7d26c1-4312-4d33-9cb9-d9348c7fd24f",
                             "name": "Server  permissions are required for this request.",
                             "originalRequest": {
                                 "method": "GET",
@@ -4942,7 +4942,7 @@
                 },
                 {
                     "name": "Update dashboard extensions settings of server",
-                    "id": "db762385-a96b-4406-8ac9-65568e54c17c",
+                    "id": "2f7f6537-8be2-496c-bae4-b9dfd193e5dd",
                     "request": {
                         "method": "PUT",
                         "header": [
@@ -4978,7 +4978,7 @@
                     },
                     "response": [
                         {
-                            "id": "b96f820b-6c83-42ab-a00d-2525cf063d4a",
+                            "id": "5e4eef0e-3f2c-4450-9f6b-330956c2c7e1",
                             "name": "Successful.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -5027,7 +5027,7 @@
                             "body": "{\n \"block_list_items\": [\n  {\n   \"url\": \"<string>\",\n   \"block_list_item_luid\": \"<string>\"\n  },\n  {\n   \"url\": \"<string>\",\n   \"block_list_item_luid\": \"<string>\"\n  }\n ],\n \"extensions_enabled\": \"<boolean>\"\n}"
                         },
                         {
-                            "id": "ad7d1cf6-737e-42a8-bf09-3c0fe549ed1d",
+                            "id": "aeb1aae4-dabf-4014-924f-0a8ee7316493",
                             "name": "User could not be authenticated.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -5076,7 +5076,7 @@
                             "body": "{}"
                         },
                         {
-                            "id": "74594e21-143e-4371-9f51-e2e1fb82b4a1",
+                            "id": "5f6e6233-8db6-4003-9cd4-e2e097e0b878",
                             "name": "Server  permissions are required for this request.",
                             "originalRequest": {
                                 "method": "PUT",
@@ -5127,7 +5127,7 @@
                     ]
                 }
             ],
-            "id": "99f4f3dc-7578-47a4-92df-aab243fb8f5f",
+            "id": "aa124478-76ec-4b05-9b8b-f1d1d95437ba",
             "description": "Enable and configure security for [dashboard extensions](https://help.tableau.com/current/server/en-us/config_r_tabpy.htm) on sites and, for on premise installations, on servers. With these extensions you can add custom features to a dashboard using JavaScript. \n\nUsing the extension methods of the Tableau Server REST API you can: <ul> <li>List the settings for extensions of a server or site</li> <li>Enable or disable extensions or sandboxed extensions for a server or site</li> <li>List, get, create, and delete entries in server blocked extensions list</li> <li>List, get, create, update, and delete entries in server allowed (safe) extensions list</li> </ul> \n\nThis functionality relates to the UI elements and concepts described at [Manage Dashboard Settings](https://help.tableau.com/current/server/en-us/dashboard_extensions_server.htm)."
         }
     ],
@@ -5153,7 +5153,7 @@
     },
     "variable": [
         {
-            "id": "45ec516c-e2e7-4222-8302-f663f41c8ba0",
+            "id": "8432e8a7-f6b0-4a0d-a729-3ccd4e3a0eb6",
             "key": "baseUrl",
             "value": "https://10ax.online.tableau.com",
             "type": "string"
