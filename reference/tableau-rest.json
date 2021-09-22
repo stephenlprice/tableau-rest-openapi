@@ -263,178 +263,6 @@
         }
       }
     },
-    "/api/-/settings/site/extensions/dashboard/safeListItems/{safe_list_item_luid}": {
-      "get": {
-        "tags": [
-          "Dashboard Extensions Settings Methods"
-        ],
-        "summary": "Get allowed dashboard extension on site",
-        "description": "Gets the details of a specific dashboard extension on the safe list of the site you are signed into. Permissions - This method can be called by site and server administrators.",
-        "operationId": "getDashboardExtensionsSafeListItem",
-        "parameters": [
-          {
-            "name": "safe_list_item_luid",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": ""
-            }
-          },
-          {
-            "$ref": "#/components/parameters/tableau.auth.header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful.",
-            "content": {
-              "application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "User could not be authenticated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/responses/MissingAuth"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidAuth"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "$ref": "#/components/responses/ServerOrSiteAdminRequired"
-          },
-          "404": {
-            "$ref": "#/components/responses/SafeListItemNonexistent"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Dashboard Extensions Settings Methods"
-        ],
-        "summary": "Update settings for allowed dashboard extension on site",
-        "description": "Updates the settings of a specific dashboard extension in the safe list of the site you are signed into. Permissions - This method can be called by site and server administrators.",
-        "operationId": "updateDashboardExtensionsSafeListItem",
-        "parameters": [
-          {
-            "name": "safe_list_item_luid",
-            "in": "path",
-            "required": true,
-            "schema": {}
-          },
-          {
-            "$ref": "#/components/parameters/tableau.auth.header"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json": {
-              "schema": {
-                "$ref": "#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful.",
-            "content": {
-              "application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "User could not be authenticated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/responses/MissingAuth"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidAuth"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "$ref": "#/components/responses/ServerOrSiteAdminRequired"
-          },
-          "404": {
-            "$ref": "#/components/responses/SafeListItemNonexistent"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Dashboard Extensions Settings Methods"
-        ],
-        "summary": "Disallow dashboard extension on site",
-        "description": "Deletes a specific dashboard extension from the safe list of the site you are signed into. Permissions - This method can be called by site and server administrators.",
-        "operationId": "deleteDashboardExtensionsSafeListItem",
-        "parameters": [
-          {
-            "name": "safe_list_item_luid",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": ""
-            }
-          },
-          {
-            "$ref": "#/components/parameters/tableau.auth.header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful."
-          },
-          "401": {
-            "description": "User could not be authenticated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/responses/MissingAuth"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidAuth"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "$ref": "#/components/responses/ServerOrSiteAdminRequired"
-          },
-          "404": {
-            "$ref": "#/components/responses/SafeListItemNonexistent"
-          }
-        }
-      }
-    },
     "/api/-/settings/site/extensions/analytics/workbooks/{workbook_luid}/connections": {
       "get": {
         "tags": [
@@ -670,6 +498,441 @@
           },
           "403": {
             "$ref": "#/components/responses/ServerOrSiteAdminRequired"
+          }
+        }
+      }
+    },
+    "/api/-/settings/site/extensions/analytics/connections": {
+      "get": {
+        "tags": [
+          "Analytics Extensions Settings Methods"
+        ],
+        "summary": "List analytics extension connections on site",
+        "description": "Lists a site's analytics extension connections for external services. Permissions- This method can be called by site and server administrators.",
+        "operationId": "getAnalyticsExtensionsConnections",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/tableau.auth.header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/vnd.tableau.analyticsextensions.v1.ConnectionList+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ConnectionList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/responses/InvalidConnectionHostName"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidConnectionType"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidConnectionPort"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidConnectionUsername"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidConnectionPassword"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidConnectionSSLSettings"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User could not be authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/responses/MissingAuth"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidAuth"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/ServerOrSiteAdminRequired"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Analytics Extensions Settings Methods"
+        ],
+        "summary": "Add analytics extension connection to site",
+        "description": "Adds a connection to an external service for analytics extensions on this site. Permissions - This method can be called by site and server administrators.",
+        "operationId": "addAnalyticsExtensionsConnection",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/tableau.auth.header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json": {
+              "schema": {
+                "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful.",
+            "content": {
+              "application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/responses/MultipleConnectionsAttempted"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidConnectionHostName"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidConnectionPort"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidConnectionType"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidConnectionUsername"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidConnectionPassword"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidConnectionSSLSettings"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User could not be authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/responses/MissingAuth"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidAuth"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/ServerOrSiteAdminRequired"
+          }
+        }
+      }
+    },
+    "/api/-/settings/server/extensions/analytics": {
+      "get": {
+        "tags": [
+          "Analytics Extensions Settings Methods"
+        ],
+        "summary": "Get enabled state of analytics extensions on server",
+        "description": "Gets the enabled/disabled state of analytics extensions on a server. Permissions - This method can only be called by server administrators.",
+        "operationId": "getAnalyticsExtensionsServerSettings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/tableau.auth.header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/vnd.tableau.analyticsextensions.v1.ServerSettings+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ServerSettings"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User could not be authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/responses/MissingAuth"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidAuth"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/ServerAdminRequired"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Analytics Extensions Settings Methods"
+        ],
+        "summary": "Enable/disable analytics extensions on server",
+        "description": "Enables or disables analytics extensions on a server. Permissions - This method can only be called by server administrators.",
+        "operationId": "updateAnalyticsExtensionsServerSettings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/tableau.auth.header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.tableau.analyticsextensions.v1.ServerSettings+json": {
+              "schema": {
+                "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ServerSettings"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/vnd.tableau.analyticsextensions.v1.ServerSettings+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ServerSettings"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User could not be authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/responses/MissingAuth"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidAuth"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/ServerAdminRequired"
+          }
+        }
+      }
+    },
+    "/api/-/settings/site/extensions/dashboard/safeListItems/{safe_list_item_luid}": {
+      "get": {
+        "tags": [
+          "Dashboard Extensions Settings Methods"
+        ],
+        "summary": "Get allowed dashboard extension on site",
+        "description": "Gets the details of a specific dashboard extension on the safe list of the site you are signed into. Permissions - This method can be called by site and server administrators.",
+        "operationId": "getDashboardExtensionsSafeListItem",
+        "parameters": [
+          {
+            "name": "safe_list_item_luid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          {
+            "$ref": "#/components/parameters/tableau.auth.header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User could not be authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/responses/MissingAuth"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidAuth"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/ServerOrSiteAdminRequired"
+          },
+          "404": {
+            "$ref": "#/components/responses/SafeListItemNonexistent"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Dashboard Extensions Settings Methods"
+        ],
+        "summary": "Update settings for allowed dashboard extension on site",
+        "description": "Updates the settings of a specific dashboard extension in the safe list of the site you are signed into. Permissions - This method can be called by site and server administrators.",
+        "operationId": "updateDashboardExtensionsSafeListItem",
+        "parameters": [
+          {
+            "name": "safe_list_item_luid",
+            "in": "path",
+            "required": true,
+            "schema": {}
+          },
+          {
+            "$ref": "#/components/parameters/tableau.auth.header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json": {
+              "schema": {
+                "$ref": "#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "User could not be authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/responses/MissingAuth"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidAuth"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/ServerOrSiteAdminRequired"
+          },
+          "404": {
+            "$ref": "#/components/responses/SafeListItemNonexistent"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Dashboard Extensions Settings Methods"
+        ],
+        "summary": "Disallow dashboard extension on site",
+        "description": "Deletes a specific dashboard extension from the safe list of the site you are signed into. Permissions - This method can be called by site and server administrators.",
+        "operationId": "deleteDashboardExtensionsSafeListItem",
+        "parameters": [
+          {
+            "name": "safe_list_item_luid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          {
+            "$ref": "#/components/parameters/tableau.auth.header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful."
+          },
+          "401": {
+            "description": "User could not be authenticated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/responses/MissingAuth"
+                    },
+                    {
+                      "$ref": "#/components/responses/InvalidAuth"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/ServerOrSiteAdminRequired"
+          },
+          "404": {
+            "$ref": "#/components/responses/SafeListItemNonexistent"
           }
         }
       }
@@ -982,269 +1245,6 @@
           },
           "403": {
             "$ref": "#/components/responses/ServerOrSiteAdminRequired"
-          }
-        }
-      }
-    },
-    "/api/-/settings/site/extensions/analytics/connections": {
-      "get": {
-        "tags": [
-          "Analytics Extensions Settings Methods"
-        ],
-        "summary": "List analytics extension connections on site",
-        "description": "Lists a site's analytics extension connections for external services. Permissions- This method can be called by site and server administrators.",
-        "operationId": "getAnalyticsExtensionsConnections",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/tableau.auth.header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful.",
-            "content": {
-              "application/vnd.tableau.analyticsextensions.v1.ConnectionList+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ConnectionList"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/responses/InvalidConnectionHostName"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidConnectionType"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidConnectionPort"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidConnectionUsername"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidConnectionPassword"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidConnectionSSLSettings"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "User could not be authenticated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/responses/MissingAuth"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidAuth"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "$ref": "#/components/responses/ServerOrSiteAdminRequired"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Analytics Extensions Settings Methods"
-        ],
-        "summary": "Add analytics extension connection to site",
-        "description": "Adds a connection to an external service for analytics extensions on this site. Permissions - This method can be called by site and server administrators.",
-        "operationId": "addAnalyticsExtensionsConnection",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/tableau.auth.header"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json": {
-              "schema": {
-                "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Successful.",
-            "content": {
-              "application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/responses/MultipleConnectionsAttempted"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidConnectionHostName"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidConnectionPort"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidConnectionType"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidConnectionUsername"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidConnectionPassword"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidConnectionSSLSettings"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "User could not be authenticated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/responses/MissingAuth"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidAuth"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "$ref": "#/components/responses/ServerOrSiteAdminRequired"
-          }
-        }
-      }
-    },
-    "/api/-/settings/server/extensions/analytics": {
-      "get": {
-        "tags": [
-          "Analytics Extensions Settings Methods"
-        ],
-        "summary": "Get enabled state of analytics extensions on server",
-        "description": "Gets the enabled/disabled state of analytics extensions on a server. Permissions - This method can only be called by server administrators.",
-        "operationId": "getAnalyticsExtensionsServerSettings",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/tableau.auth.header"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful.",
-            "content": {
-              "application/vnd.tableau.analyticsextensions.v1.ServerSettings+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ServerSettings"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "User could not be authenticated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/responses/MissingAuth"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidAuth"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "$ref": "#/components/responses/ServerAdminRequired"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Analytics Extensions Settings Methods"
-        ],
-        "summary": "Enable/disable analytics extensions on server",
-        "description": "Enables or disables analytics extensions on a server. Permissions - This method can only be called by server administrators.",
-        "operationId": "updateAnalyticsExtensionsServerSettings",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/tableau.auth.header"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.tableau.analyticsextensions.v1.ServerSettings+json": {
-              "schema": {
-                "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ServerSettings"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful.",
-            "content": {
-              "application/vnd.tableau.analyticsextensions.v1.ServerSettings+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/tableau.analyticsextensions.v1.ServerSettings"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "User could not be authenticated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/responses/MissingAuth"
-                    },
-                    {
-                      "$ref": "#/components/responses/InvalidAuth"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "403": {
-            "$ref": "#/components/responses/ServerAdminRequired"
           }
         }
       }
