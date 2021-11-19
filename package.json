@@ -1,0 +1,25 @@
+{
+  "name": "tableau-rest-openapi",
+  "version": "1.0.0",
+  "description": "Experimenting with OpenAPI definitions for Tableau Software's entire REST API surface",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephenlprice/tableau-rest-openapi.git"
+  },
+  "author": "stelloprint",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stephenlprice/tableau-rest-openapi/issues"
+  },
+  "homepage": "https://github.com/stephenlprice/tableau-rest-openapi#readme",
+  "dependencies": {
+    "@stoplight/spectral-cli": "^6.1.0"
+  }
+}
