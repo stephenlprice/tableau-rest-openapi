@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/stephenlprice/tableau-rest-openapi#readme",
   "dependencies": {
+    "@stoplight/prism-cli": "^4.6.0",
     "@stoplight/spectral-cli": "^6.1.0"
   }
 }
