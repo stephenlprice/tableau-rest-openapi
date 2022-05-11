@@ -1,0 +1,1561 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: stellopricint@gmail.com
+    name: stelloprint
+    url: https://stelloprint.stoplight.io/
+  description: ">The following OpenAPI documentation describes the details of the\
+    \ new Tableau RESTful APIs. A growing number of these are  being released alongside\
+    \ more than 150 [classic REST endpoints](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm)\
+    \  that are currently in wide usage in the Tableau community. \n\n >There are\
+    \ some differences users of the classic endpoints will recognize when viewing\
+    \ these new endpoints. Request bodies for these new REST endpoints must  be formatted\
+    \ using JSON. Endpoint URIs don't contain an API version number. For more information,\
+    \ see  [REST API and Resource Versions](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm).\n\
+    \ \n![tableau platform](https://github.com/stephenlprice/tableau-rest-openapi/blob/main/assets/images/tableau-platform.png?raw=true)"
+  license:
+    name: Sample
+    url: https://stelloprint.stoplight.io/
+  termsOfService: https://stelloprint.stoplight.io/
+  title: API Reference for Tableau Resource Versioned RESTful Endpoints
+  version: "2021.2"
+  x-logo:
+    url: https://help.tableau.com/current/api/rest_api/en-us/Resources/tableau-logo.png
+    backgroundColor: '#FFFFFF'
+    altText: Tableau REST API
+servers:
+- description: US West (10ax)
+  url: https://10ax.online.tableau.com
+- description: US West (10ay)
+  url: https://10ay.online.tableau.com
+- description: US West (10az)
+  url: https://10az.online.tableau.com
+- description: US West (2b)
+  url: https://us-west-2b.online.tableau.com
+- description: US East (1)
+  url: https://us-east-1.online.tableau.com
+- description: US East (a)
+  url: https://prod-useast-a.online.tableau.com
+- description: US East (b)
+  url: https://prod-useast-b.online.tableau.com
+- description: EU West (dub01)
+  url: https://dub01.online.tableau.com
+- description: EU West (1a)
+  url: https://eu-west-1a.online.tableau.com
+- description: Asia Pacific (Japan)
+  url: https://prod-apnortheast-a.online.tableau.com
+- description: Asia Pacific (Australia)
+  url: https://prod-apsoutheast-a.online.tableau.com
+- description: EU West (uk-a)
+  url: https://prod-uk-a.online.tableau.com
+- description: Canada - Quebec
+  url: https://prod-ca-a.online.tableau.com
+security:
+- X-Tableau-Auth: []
+tags:
+- description: "Enable and configure [analytics extensions](https://help.tableau.com/current/server/en-us/config_r_tabpy.htm)\
+    \ on sites and, for on premise installations, on servers. With these extensions\
+    \ you can extend Tableau dynamic calculations with languages like R and python,\
+    \ and with other tools and platforms. For more information, see [Analytics Extensions\
+    \ API](https://tableau.github.io/analytics-extensions-api/). \n\nWhen upgrading\
+    \ from a server version less than 2020.2, analytics extensions must be enabled\
+    \ on each site even if external services were enabled on the server being upgraded.\
+    \ Connections for sites must be ported manually. \n\nUsing the analytics extensions\
+    \ settings methods you can: <ul> <li>Enable and disable analytics extensions for\
+    \ a Tableau server (on-premise only) or for a site.</li> <li>Create and manage\
+    \ an extension's connections to the service hosting your custom calculations.</li>\
+    \ </ul>"
+  name: Analytics Extensions Settings Methods
+- description: "Enable and configure security for [dashboard extensions](https://help.tableau.com/current/server/en-us/config_r_tabpy.htm)\
+    \ on sites and, for on premise installations, on servers. With these extensions\
+    \ you can add custom features to a dashboard using JavaScript. \n\nUsing the extension\
+    \ methods of the Tableau Server REST API you can: <ul> <li>List the settings for\
+    \ extensions of a server or site</li> <li>Enable or disable extensions or sandboxed\
+    \ extensions for a server or site</li> <li>List, get, create, and delete entries\
+    \ in server blocked extensions list</li> <li>List, get, create, update, and delete\
+    \ entries in server allowed (safe) extensions list</li> </ul> \n\nThis functionality\
+    \ relates to the UI elements and concepts described at [Manage Dashboard Settings](https://help.tableau.com/current/server/en-us/dashboard_extensions_server.htm)."
+  name: Dashboard Extensions Settings Methods
+paths:
+  /api/-/settings/site/extensions/analytics/connections/{connection_luid}:
+    delete:
+      description: Deletes a specific analytics extension connection for an external
+        service from a site. Permissions - This method can be called by site and server
+        administrators.
+      operationId: deleteAnalyticsExtensionsConnection
+      parameters:
+      - explode: false
+        in: path
+        name: connection_luid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Successful.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+        "404":
+          description: The connection does not exist.
+      summary: Delete analytics extension connection from site
+      tags:
+      - Analytics Extensions Settings Methods
+      x-accepts: application/json
+    get:
+      description: Get the details of a specified analytics extension connection to
+        an external service. Permissions - This method can only be called by users
+        with server or site administrator permissions.
+      operationId: getAnalyticsExtensionsConnection
+      parameters:
+      - explode: false
+        in: path
+        name: connection_luid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json:
+              schema:
+                $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem'
+          description: Successful.
+      summary: Get analytics extension details
+      tags:
+      - Analytics Extensions Settings Methods
+      x-accepts: application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json
+    put:
+      description: Updates the details of specified analytics extension connection
+        for an external service to a site. Permissions - This method can be called
+        by site and server administrators.
+      operationId: updateAnalyticsExtensionsConnection
+      parameters:
+      - explode: false
+        in: path
+        name: connection_luid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json:
+            schema:
+              $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem'
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json:
+              schema:
+                $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem'
+          description: Successful.
+        "400":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/InvalidConnectionHostName'
+                - $ref: '#/components/responses/InvalidConnectionPort'
+                - $ref: '#/components/responses/InvalidConnectionType'
+                - $ref: '#/components/responses/InvalidConnectionUsername'
+                - $ref: '#/components/responses/InvalidConnectionPassword'
+                - $ref: '#/components/responses/InvalidConnectionSSLSettings'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+        "404":
+          description: The connection does not exist.
+      summary: Update analytics extension connection of site
+      tags:
+      - Analytics Extensions Settings Methods
+      x-content-type: application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json
+      x-accepts: application/json
+  /api/-/settings/site/extensions/analytics/workbooks/{workbook_luid}/connections:
+    get:
+      description: "Lists basic details of each analytics extension connection available\
+        \ for a specified workbook, including connection type and name. Permissions\
+        \ - This method can be called by users that have permissions to the specified\
+        \ workbook."
+      operationId: getConnectionOptionsForWorkbook
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: workbook_luid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ConnectionMetadataList+json:
+              schema:
+                $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionMetadataList'
+          description: Successful.
+      summary: List analytics extension connections of workbook
+      tags:
+      - Analytics Extensions Settings Methods
+      x-accepts: application/vnd.tableau.analyticsextensions.v1.ConnectionMetadataList+json
+  /api/-/settings/site/extensions/analytics/workbooks/{workbook_luid}/selected_connection:
+    delete:
+      description: "Remove the currently used analytics extension connection to an\
+        \ external service  from the specified workbook. The connection remains configured,\
+        \ and is available for further usage by the workbook. Permissions - This method\
+        \ can be called by users with authoring access to the workbook."
+      operationId: deleteConnectionFromWorkbook
+      parameters:
+      - explode: false
+        in: path
+        name: workbook_luid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Successful.
+      summary: Remove current analytics extension connection for workbook
+      tags:
+      - Analytics Extensions Settings Methods
+      x-accepts: application/json
+    get:
+      description: "Gets basic details, including connection type and name, of the\
+        \ analytics extension connection to an external service that the specified\
+        \ workbook is currently using. Permissions - This method can be called by\
+        \ users with authoring access to the workbook."
+      operationId: getSelectedConnectionForWorkbook
+      parameters:
+      - explode: false
+        in: path
+        name: workbook_luid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ConnectionMetadata+json:
+              schema:
+                $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionMetadata'
+          description: Successful.
+      summary: Get current analytics extension for workbook
+      tags:
+      - Analytics Extensions Settings Methods
+      x-accepts: application/vnd.tableau.analyticsextensions.v1.ConnectionMetadata+json
+    put:
+      description: Updates the analytics extension connection to external service
+        currently used by a workbook. Permissions - This method can be called by users
+        that have permissions to the specified workbook.
+      operationId: updateWorkbookWithConnection
+      parameters:
+      - explode: false
+        in: path
+        name: workbook_luid
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/vnd.tableau.analyticsextensions.v1.ConnectionMapping+json:
+            schema:
+              $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionMapping'
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ConnectionMapping+json:
+              schema:
+                $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionMapping'
+          description: Successful.
+      summary: Update analytics extension for workbook
+      tags:
+      - Analytics Extensions Settings Methods
+      x-content-type: application/vnd.tableau.analyticsextensions.v1.ConnectionMapping+json
+      x-accepts: application/vnd.tableau.analyticsextensions.v1.ConnectionMapping+json
+  /api/-/settings/site/extensions/analytics:
+    get:
+      description: Gets the enabled/disabled state of analytics extensions on a site.
+        Permissions - This method can be called by site and server administrators.
+      operationId: getAnalyticsExtensionsSiteSettings
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.analyticsextensions.v1.SiteSettings+json:
+              schema:
+                $ref: '#/components/schemas/tableau.analyticsextensions.v1.SiteSettings'
+          description: Success.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+      summary: Get enabled state of analytics extensions on site
+      tags:
+      - Analytics Extensions Settings Methods
+      x-accepts: application/json
+    put:
+      description: Enables or disables analytics extensions on a site. Permissions
+        - This method can be called by site and server administrators. Availability
+        - This method is not available for Tableau Online.
+      operationId: updateAnalyticsExtensionsSiteSettings
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/vnd.tableau.analyticsextensions.v1.SiteSettings+json:
+            schema:
+              $ref: '#/components/schemas/tableau.analyticsextensions.v1.SiteSettings'
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.analyticsextensions.v1.SiteSettings+json:
+              schema:
+                $ref: '#/components/schemas/tableau.analyticsextensions.v1.SiteSettings'
+          description: Successful.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+      summary: Update enabled state of analytics extensions on site
+      tags:
+      - Analytics Extensions Settings Methods
+      x-content-type: application/vnd.tableau.analyticsextensions.v1.SiteSettings+json
+      x-accepts: application/json
+  /api/-/settings/site/extensions/analytics/connections:
+    get:
+      description: Lists a site's analytics extension connections for external services.
+        Permissions- This method can be called by site and server administrators.
+      operationId: getAnalyticsExtensionsConnections
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ConnectionList+json:
+              schema:
+                $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionList'
+          description: Successful.
+        "400":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/InvalidConnectionHostName'
+                - $ref: '#/components/responses/InvalidConnectionType'
+                - $ref: '#/components/responses/InvalidConnectionPort'
+                - $ref: '#/components/responses/InvalidConnectionUsername'
+                - $ref: '#/components/responses/InvalidConnectionPassword'
+                - $ref: '#/components/responses/InvalidConnectionSSLSettings'
+          description: Bad Request.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+      summary: List analytics extension connections on site
+      tags:
+      - Analytics Extensions Settings Methods
+      x-accepts: application/json
+    post:
+      description: Adds a connection to an external service for analytics extensions
+        on this site. Permissions - This method can be called by site and server administrators.
+      operationId: addAnalyticsExtensionsConnection
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json:
+            schema:
+              $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem'
+      responses:
+        "201":
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json:
+              schema:
+                $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem'
+          description: Successful.
+        "400":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MultipleConnectionsAttempted'
+                - $ref: '#/components/responses/InvalidConnectionHostName'
+                - $ref: '#/components/responses/InvalidConnectionPort'
+                - $ref: '#/components/responses/InvalidConnectionType'
+                - $ref: '#/components/responses/InvalidConnectionUsername'
+                - $ref: '#/components/responses/InvalidConnectionPassword'
+                - $ref: '#/components/responses/InvalidConnectionSSLSettings'
+          description: Bad request.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+      summary: Add analytics extension connection to site
+      tags:
+      - Analytics Extensions Settings Methods
+      x-content-type: application/vnd.tableau.analyticsextensions.v1.ConnectionItem+json
+      x-accepts: application/json
+  /api/-/settings/server/extensions/analytics:
+    get:
+      description: Gets the enabled/disabled state of analytics extensions on a server.
+        Permissions - This method can only be called by server administrators.
+      operationId: getAnalyticsExtensionsServerSettings
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ServerSettings+json:
+              schema:
+                $ref: '#/components/schemas/tableau.analyticsextensions.v1.ServerSettings'
+          description: Successful.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server  permissions are required for this request.
+      summary: Get enabled state of analytics extensions on server
+      tags:
+      - Analytics Extensions Settings Methods
+      x-accepts: application/json
+    put:
+      description: Enables or disables analytics extensions on a server. Permissions
+        - This method can only be called by server administrators.
+      operationId: updateAnalyticsExtensionsServerSettings
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/vnd.tableau.analyticsextensions.v1.ServerSettings+json:
+            schema:
+              $ref: '#/components/schemas/tableau.analyticsextensions.v1.ServerSettings'
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.analyticsextensions.v1.ServerSettings+json:
+              schema:
+                $ref: '#/components/schemas/tableau.analyticsextensions.v1.ServerSettings'
+          description: Successful.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server  permissions are required for this request.
+      summary: Enable/disable analytics extensions on server
+      tags:
+      - Analytics Extensions Settings Methods
+      x-content-type: application/vnd.tableau.analyticsextensions.v1.ServerSettings+json
+      x-accepts: application/json
+  /api/-/settings/site/extensions/dashboard/safeListItems/{safe_list_item_luid}:
+    delete:
+      description: Deletes a specific dashboard extension from the safe list of the
+        site you are signed into. Permissions - This method can be called by site
+        and server administrators.
+      operationId: deleteDashboardExtensionsSafeListItem
+      parameters:
+      - explode: false
+        in: path
+        name: safe_list_item_luid
+        required: true
+        schema:
+          description: ""
+          type: string
+        style: simple
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Successful.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+        "404":
+          description: Unable to find a safe list item with given LUID.
+      summary: Disallow dashboard extension on site
+      tags:
+      - Dashboard Extensions Settings Methods
+      x-accepts: application/json
+    get:
+      description: Gets the details of a specific dashboard extension on the safe
+        list of the site you are signed into. Permissions - This method can be called
+        by site and server administrators.
+      operationId: getDashboardExtensionsSafeListItem
+      parameters:
+      - explode: false
+        in: path
+        name: safe_list_item_luid
+        required: true
+        schema:
+          description: ""
+          type: string
+        style: simple
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json:
+              schema:
+                $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem'
+          description: Successful.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+        "404":
+          description: Unable to find a safe list item with given LUID.
+      summary: Get allowed dashboard extension on site
+      tags:
+      - Dashboard Extensions Settings Methods
+      x-accepts: application/json
+    put:
+      description: Updates the settings of a specific dashboard extension in the safe
+        list of the site you are signed into. Permissions - This method can be called
+        by site and server administrators.
+      operationId: updateDashboardExtensionsSafeListItem
+      parameters:
+      - explode: false
+        in: path
+        name: safe_list_item_luid
+        required: true
+        schema: {}
+        style: simple
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json:
+            schema:
+              $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem'
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json:
+              schema:
+                $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem'
+          description: Successful.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+        "404":
+          description: Unable to find a safe list item with given LUID.
+      summary: Update settings for allowed dashboard extension on site
+      tags:
+      - Dashboard Extensions Settings Methods
+      x-content-type: application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json
+      x-accepts: application/json
+  /api/-/settings/site/extensions/dashboard:
+    get:
+      description: Lists the dashboard extension settings of the site you are signed
+        into. Permissions - This method can be called by site and server administrators.
+      operationId: getDashboardExtensionsSiteSettings
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.SiteSettings+json:
+              schema:
+                $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SiteSettings'
+          description: Successful.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+      summary: List dashboard extension settings of site
+      tags:
+      - Dashboard Extensions Settings Methods
+      x-accepts: application/json
+    put:
+      description: Updates the settings for dashboard extensions for the site you
+        are signed into. Permissions - This method can be called by site and server
+        administrators.
+      operationId: updateDashboardExtensionsSiteSettings
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/vnd.tableau.extensions.dashboard.v1.SiteSettings+json:
+            schema:
+              $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SiteSettings'
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.SiteSettings+json:
+              schema:
+                $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SiteSettings'
+          description: Successful.
+        "400":
+          description: The request body is malformed.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+      summary: Update dashboard extension settings of site
+      tags:
+      - Dashboard Extensions Settings Methods
+      x-content-type: application/vnd.tableau.extensions.dashboard.v1.SiteSettings+json
+      x-accepts: application/json
+  /api/-/settings/server/extensions/dashboard/blockListItems:
+    get:
+      description: Lists the dashboard extensions on the blocked list of a server.
+        Permissions - This method can only be called by server administrators. Availability
+        - Not available for Tableau Online.
+      operationId: getDashboardExtensionsBlockListItems
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.BlockListItems+json:
+              schema:
+                $ref: '#/components/schemas/tableau.extensions.dashboard.v1.BlockListItems'
+          description: Successful.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+      summary: List blocked dashboard extensions on server
+      tags:
+      - Dashboard Extensions Settings Methods
+      x-accepts: application/json
+    post:
+      description: Adds a dashboard extension to the block list of a server. Permissions
+        - This method can only be called by server administrators. Availability -
+        Not available for Tableau Online.
+      operationId: createDashboardExtensionsBlockListItem
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/vnd.tableau.extensions.dashboard.v1.BlockListItem+json:
+            schema:
+              $ref: '#/components/schemas/tableau.extensions.dashboard.v1.BlockListItem'
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.BlockListItem+json:
+              schema:
+                $ref: '#/components/schemas/tableau.extensions.dashboard.v1.BlockListItem'
+          description: Successful.
+        "400":
+          description: The request body is malformed.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+      summary: Block dashboard extension on server
+      tags:
+      - Dashboard Extensions Settings Methods
+      x-content-type: application/vnd.tableau.extensions.dashboard.v1.BlockListItem+json
+      x-accepts: application/json
+  /api/-/settings/site/extensions/dashboard/safeListItems:
+    get:
+      description: Lists the dashboard extensions on the safe list of the site you
+        are signed into. Permissions - This method can be called by site and server
+        administrators.
+      operationId: getDashboardExtensionsSafeListItems
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.SafeListItems+json:
+              schema:
+                $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SafeListItems'
+          description: Successful.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+      summary: Lists allowed dashboard extensions on site
+      tags:
+      - Dashboard Extensions Settings Methods
+      x-accepts: application/json
+    post:
+      description: Adds a dashboard extension to the safe list the site you are signed
+        into. Permissions - This method can be called by site and server administrators.
+        Availability - Not available for Tableau Online.
+      operationId: createDashboardExtensionsSafeListItem
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json:
+            schema:
+              $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem'
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json:
+              schema:
+                $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem'
+          description: Successful.
+        "400":
+          description: The request body is malformed.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+      summary: Allow dashboard extension on site
+      tags:
+      - Dashboard Extensions Settings Methods
+      x-content-type: application/vnd.tableau.extensions.dashboard.v1.SafeListItem+json
+      x-accepts: application/json
+  /api/-/settings/server/extensions/dashboard/blockListItems/{block_list_item_luid}:
+    delete:
+      description: Deletes a specific extension from the block list of a server. Permissions
+        - This method can only be called by server administrators. Availability -
+        Not available for Tableau Online.
+      operationId: deleteDashboardExtensionsBlockListItem
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: block_list_item_luid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Successful.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+        "404":
+          description: Unable to find a block list item with given LUID.
+      summary: Unblock dashboard extension on server
+      tags:
+      - Dashboard Extensions Settings Methods
+      x-accepts: application/json
+    get:
+      description: Gets the details of a specific dashboard extension on the blocked
+        list of a server. Permissions - This method can only be called by server administrators.
+        Availability - Not available for Tableau Online.
+      operationId: getDashboardExtensionsBlockListItem
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: block_list_item_luid
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.BlockListItem+json:
+              schema:
+                $ref: '#/components/schemas/tableau.extensions.dashboard.v1.BlockListItem'
+          description: Successful.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated
+        "403":
+          description: Server or site administrator permissions are required for this
+            request.
+        "404":
+          description: Unable to find a block list item with given LUID.
+      summary: Get blocked dashboard extension on server
+      tags:
+      - Dashboard Extensions Settings Methods
+      x-accepts: application/json
+  /api/-/settings/server/extensions/dashboard:
+    get:
+      description: Lists the dashboard extension settings of a server. Permissions
+        - This method can only be called by server administrators. Availability -
+        Not available for Tableau Online.
+      operationId: getDashboardExtensionsServerSettings
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.ServerSettings+json:
+              schema:
+                $ref: '#/components/schemas/tableau.extensions.dashboard.v1.ServerSettings'
+          description: Successful.
+        "400":
+          description: The request body is malformed.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated.
+        "403":
+          description: Server  permissions are required for this request.
+      summary: List dashboard extension settings of server
+      tags:
+      - Dashboard Extensions Settings Methods
+      x-accepts: application/json
+    put:
+      description: Updates the settings for dashboard extensions of a server. Permissions
+        - This method can only be called by server administrators.
+      operationId: updateDashboardExtensionsServerSettings
+      parameters:
+      - description: "The Tableau authentication header. The value is a credentials\
+          \ token from a Tableau server's response to an authentication request. \n\
+          \n The Content-Type and Accept headers should be the mediatype of the request\
+          \ and response except in cases where you want to  [explicitly allow other\
+          \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+        explode: false
+        in: header
+        name: X-Tableau-Auth
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/vnd.tableau.extensions.dashboard.v1.ServerSettings+json:
+            schema:
+              $ref: '#/components/schemas/tableau.extensions.dashboard.v1.ServerSettings'
+      responses:
+        "200":
+          content:
+            application/vnd.tableau.extensions.dashboard.v1.ServerSettings+json:
+              schema:
+                $ref: '#/components/schemas/tableau.extensions.dashboard.v1.ServerSettings'
+          description: Successful.
+        "401":
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/responses/MissingAuth'
+                - $ref: '#/components/responses/InvalidAuth'
+          description: User could not be authenticated.
+        "403":
+          description: Server  permissions are required for this request.
+      summary: Update dashboard extensions settings of server
+      tags:
+      - Dashboard Extensions Settings Methods
+      x-content-type: application/vnd.tableau.extensions.dashboard.v1.ServerSettings+json
+      x-accepts: application/json
+components:
+  parameters:
+    tableau.auth.header:
+      description: "The Tableau authentication header. The value is a credentials\
+        \ token from a Tableau server's response to an authentication request. \n\n\
+        \ The Content-Type and Accept headers should be the mediatype of the request\
+        \ and response except in cases where you want to  [explicitly allow other\
+        \ versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+      explode: false
+      in: header
+      name: X-Tableau-Auth
+      required: false
+      schema:
+        type: string
+      style: simple
+  responses:
+    MissingAuth:
+      description: "Missing credentials. \nThe user could not be authenticated because\
+        \ the credentials token is missing from the request. Use the token from the\
+        \ response to a successful sign in request."
+    InvalidAuth:
+      description: "Invalid credentials. \nThe user could not be authenticated because\
+        \ the credentials token in the request is invalid. Use the token from the\
+        \ response to a successful sign in request."
+    ServerAdminRequired:
+      description: Server  permissions are required for this request.
+    ServerOrSiteAdminRequired:
+      description: Server or site administrator permissions are required for this
+        request.
+    AnalyticsExtensionsDisabledOnServer:
+      description: Analytics extensions are disabled on the server and cannot be enabled
+        on this site.
+    MultipleConnectionsAttempted:
+      description: A connection is already configured for this site. Only one connection
+        per site is currently supported.
+    ConnectionNonexsitent:
+      description: The connection does not exist.
+    InvalidConnectionType:
+      description: The connection type is not valid. Specify "TABPY" or "RSERVE".
+    InvalidConnectionHostName:
+      description: The host name of the connection not valid.
+    InvalidConnectionPort:
+      description: The port number of the connection is not valid or is missing.
+    InvalidConnectionUsername:
+      description: The username of the connection is not valid.
+    InvalidConnectionPassword:
+      description: The password of the connection is not an allowed value.
+    InvalidConnectionSSLSettings:
+      description: The SSL settings of the site and HTTP/HTTPS prefix of the hostname
+        do not match.
+    SafeListItemNonexistent:
+      description: Unable to find a safe list item with given LUID.
+    BlockListItemNonexistent:
+      description: Unable to find a block list item with given LUID.
+    InvalidRequest:
+      description: The request body is malformed.
+  schemas:
+    tableau.analyticsextensions.v1.ConnectionItem:
+      description: ""
+      example:
+        is_ssl_enabled: true
+        password: password
+        port: 0
+        connection_brief:
+          connection_name: connection_name
+          connection_type: UNDEFINED
+        is_auth_enabled: true
+        host: host
+        connection_luid: connection_luid
+        username: username
+      properties:
+        connection_luid:
+          type: string
+        host:
+          description: "Required. The location of an external service (TabPy, Rserve,\
+            \ EINSTEIN_DISCOVERY, Generic API, or other) that responds to your analytics\
+            \ extension requests. The case sensitive value must be a URI, IPv4 or\
+            \ IPv6 address that is a maximum of 255 Unicode characters."
+          type: string
+        port:
+          description: Required. Integer between 1 and 65535.
+          format: int32
+          type: integer
+        is_auth_enabled:
+          description: "For Tableau Online: The value is always true. \n \n For on\
+            \ premise Tableau servers:  Optional. Set to true if authentication is\
+            \ enabled on the external service. If  true, username and password are\
+            \ required. Default is false."
+          type: boolean
+        username:
+          description: "For Tableau Online: A username is always required."
+          type: string
+        password:
+          description: "For Tableau Online: A password is always required."
+          type: string
+        is_ssl_enabled:
+          description: "For Tableau Online: The value is always true. \n \n For on\
+            \ premise Tableau servers:  Optional. Set to true if authentication is\
+            \ enabled on the external service. If  true, username and password are\
+            \ required. Default is false."
+          type: boolean
+        connection_brief:
+          $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionBrief'
+    tableau.analyticsextensions.v1.ServerSettings:
+      example:
+        enabled: true
+      properties:
+        enabled:
+          type: boolean
+    tableau.extensions.dashboard.v1.ServerSettings:
+      description: Extension settings of a Tableau server.
+      example:
+        extensions_enabled: true
+        block_list_items:
+        - block_list_item_luid: block_list_item_luid
+          url: url
+        - block_list_item_luid: block_list_item_luid
+          url: url
+      properties:
+        block_list_items:
+          items:
+            $ref: '#/components/schemas/tableau.extensions.dashboard.v1.BlockListItem'
+          type: array
+        extensions_enabled:
+          description: Specifies whether sandboxed extensions are allowed to run on
+            the site.
+          type: boolean
+    tableau.analyticsextensions.v1.ConnectionList:
+      example:
+        connectionList:
+        - is_ssl_enabled: true
+          password: password
+          port: 0
+          connection_brief:
+            connection_name: connection_name
+            connection_type: UNDEFINED
+          is_auth_enabled: true
+          host: host
+          connection_luid: connection_luid
+          username: username
+        - is_ssl_enabled: true
+          password: password
+          port: 0
+          connection_brief:
+            connection_name: connection_name
+            connection_type: UNDEFINED
+          is_auth_enabled: true
+          host: host
+          connection_luid: connection_luid
+          username: username
+      properties:
+        connectionList:
+          items:
+            $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionItem'
+          type: array
+    tableau.extensions.dashboard.v1.BlockListItems:
+      description: List of dashboard extensions blocked from running on a server.
+      example:
+        block_list_items:
+        - block_list_item_luid: block_list_item_luid
+          url: url
+        - block_list_item_luid: block_list_item_luid
+          url: url
+      properties:
+        block_list_items:
+          items:
+            $ref: '#/components/schemas/tableau.extensions.dashboard.v1.BlockListItem'
+          type: array
+    tableau.extensions.dashboard.v1.SiteSettings:
+      description: Dashboard extension settings of a site.
+      example:
+        extensions_enabled: true
+        safe_list_items:
+        - allow_full_data: true
+          safe_list_item_luid: safe_list_item_luid
+          prompt_needed: true
+          url: url
+        - allow_full_data: true
+          safe_list_item_luid: safe_list_item_luid
+          prompt_needed: true
+          url: url
+        allow_sandboxed: true
+      properties:
+        extensions_enabled:
+          description: Specifies whether extensions are allowed to run on the site.
+          type: boolean
+        allow_sandboxed:
+          description: Specifies whether sandboxed extensions are allowed to run on
+            the site.
+          type: boolean
+        safe_list_items:
+          items:
+            $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem'
+          type: array
+    tableau.extensions.dashboard.v1.SafeListItems:
+      description: A list of dashboard extensions allowed to run on a site.
+      example:
+        safe_list_items:
+        - allow_full_data: true
+          safe_list_item_luid: safe_list_item_luid
+          prompt_needed: true
+          url: url
+        - allow_full_data: true
+          safe_list_item_luid: safe_list_item_luid
+          prompt_needed: true
+          url: url
+      properties:
+        safe_list_items:
+          items:
+            $ref: '#/components/schemas/tableau.extensions.dashboard.v1.SafeListItem'
+          type: array
+    tableau.analyticsextensions.v1.SiteSettings:
+      example:
+        enabled: true
+      properties:
+        enabled:
+          type: boolean
+    tableau.analyticsextensions.v1.ConnectionMetadataList:
+      properties:
+        connectionMetadataList:
+          items:
+            $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionMetadata'
+          type: array
+    tableau.extensions.dashboard.v1.BlockListItem:
+      description: A dashboard extension that is blocked from running on a server.
+      example:
+        block_list_item_luid: block_list_item_luid
+        url: url
+      properties:
+        url:
+          description: Location of the dashboard extension to be blocked from a site.
+          type: string
+        block_list_item_luid:
+          type: string
+    tableau.extensions.dashboard.v1.SafeListItem:
+      description: A dashboard extension that is allowed to run on a site.
+      example:
+        allow_full_data: true
+        safe_list_item_luid: safe_list_item_luid
+        prompt_needed: true
+        url: url
+      properties:
+        safe_list_item_luid:
+          type: string
+        url:
+          description: Location of the dashboard extension to be allowed on a site.
+          type: string
+        allow_full_data:
+          description: "When true, the extension has access to underlying data of\
+            \ a workbook. This setting is only effective when the extension is on\
+            \ the site safe list. Default is false."
+          type: boolean
+        prompt_needed:
+          description: "When true, the user will be prompted to grant an extension\
+            \ access to the underlying data of a workbook. This setting is only effective\
+            \ when the extension is on the site safe list. Default is false."
+          type: boolean
+    tableau.analyticsextensions.v1.ConnectionBrief:
+      example:
+        connection_name: connection_name
+        connection_type: UNDEFINED
+      properties:
+        connection_name:
+          description: Required. The title of the connection.
+          type: string
+        connection_type:
+          description: "Required. The kind of service responding to analytics extension\
+            \ requests. The value can be: TABPY, for a [Tableau TabPy](https://github.com/tableau/TabPy)\
+            \ server; GENERIC_API for your custom service that complies with the [Analytics\
+            \ Extensions API spec](https://tableau.github.io/analytics-extensions-api/docs/ae_intro.html);\
+            \ or RSERVE, for an [Rserve](https://www.tableau.com/solutions/r) service;\
+            \ or EINSTEIN_DISCOVERY for your instance of [Einstein Discovery](https://help.tableau.com/current/server-linux/en-us/config_r_tabpy.htm)."
+          enum:
+          - UNDEFINED
+          - TABPY
+          - RSERVE
+          - EINSTEIN_DISCOVERY
+          - GENERIC_API
+          type: string
+    tableau.analyticsextensions.v1.ConnectionMapping:
+      properties:
+        workbook_luid:
+          type: string
+        connection_luid:
+          type: string
+    tableau.analyticsextensions.v1.ConnectionMetadata:
+      properties:
+        connection_luid:
+          type: string
+        connection_brief:
+          $ref: '#/components/schemas/tableau.analyticsextensions.v1.ConnectionBrief'
+  securitySchemes:
+    X-Tableau-Auth:
+      description: "The Tableau Server REST API requires that you send a credentials\
+        \ token with each request. The credentials token lets the server verify you\
+        \ as a valid, signed in user. To get a token, you call Sign In and pass credentials\
+        \ of a valid user, either a Personal Access Token (PAT) or a user name and\
+        \ password, along with the content URL (subpath) of the site you are signing\
+        \ in to.\n\nThe Content-Type and Accept headers should be the mediatype of\
+        \ the request and response except in cases where you want to  [explicitly\
+        \ allow other versions of the resource](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_concepts_versions.htm#per_resource_versioning)."
+      in: header
+      name: X-Tableau-Auth
+      type: apiKey
+
