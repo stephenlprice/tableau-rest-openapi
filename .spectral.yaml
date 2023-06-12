@@ -4,6 +4,7 @@ formats:
   - json-schema-loose
 extends:
   - 'spectral:oas'
+  - 'https://unpkg.com/@stoplight/spectral-owasp-ruleset/dist/ruleset.mjs'
 rules:
   operation-short-summary:
     description: 'Operation summary should be short and sweet, no full stops, and less than 20 characters'
