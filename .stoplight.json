@@ -4,7 +4,8 @@
     "openapi": {
       "rootDir": "reference",
       "include": [
-        "reference/tableau.json"
+        "reference/tableau.json",
+        "reference/tableau_oas.json"
       ]
     },
     "json_schema": {
